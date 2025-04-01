@@ -1,7 +1,8 @@
 {
   "dependencies": ["."],
   "graphs": {
-    "agent": "./src/enrichment_agent/graph.py:graph"
+    "enrichment_agent": "./src/enrichment_agent/graph.py:graph",
+    "generic_chat_agent": "./src/generic_chat_agent/graph.py:graph"
   },
   "env": ".env"
 }
