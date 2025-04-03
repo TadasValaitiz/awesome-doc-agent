@@ -26,7 +26,7 @@ def render_navbar(
 
         # App logo/name
         with col1:
-            st.markdown("#### Trading Strategy builder ")
+            st.markdown("#### AI Document assistant ")
 
         with spacer:
             st.write("")

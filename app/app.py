@@ -13,16 +13,13 @@ from utils import (
     set_page_config,
 )
 
+load_env_vars()
+
 set_page_config()
-
-env_vars = load_env_vars()
-os.environ["OPENAI_API_KEY"] = env_vars["OPENAI_API_KEY"]
-
 
 init_session_state()
 
-firebase_auth = FirebaseAuth()  
-
+firebase_auth = FirebaseAuth()
 
 
 def handle_logout():
@@ -35,11 +32,11 @@ def handle_logout():
 def main():
     """Main application function."""
     current_user = firebase_auth.get_current_user()
-    
+
     render_navbar(user_info=current_user, on_logout=handle_logout)
-    
+
     render_sidebar(user_info=current_user)
-    
+
     render_page_content(
         user_info=current_user,
         firebase_auth=firebase_auth,

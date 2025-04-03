@@ -1,0 +1,2061 @@
+
+🧵 Fetching thread information...
+╭──────────────────────────────── Thread Information ─────────────────────────────────╮
+│ {                                                                                   │
+│   "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                              │
+│   "created_at": "2025-04-02T06:26:10.938312+00:00",                                 │
+│   "updated_at": "2025-04-02T06:36:43.998204+00:00",                                 │
+│   "metadata": {                                                                     │
+│     "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                      │
+│     "graph_id": "generic_chat_agent",                                               │
+│     "file_name": "username.csv",                                                    │
+│     "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                         │
+│     "document_metadata": {                                                          │
+│       "columns": [                                                                  │
+│         "Username",                                                                 │
+│         " Identifier",                                                              │
+│         "First name",                                                               │
+│         "Last name"                                                                 │
+│       ],                                                                            │
+│       "num_rows": 140,                                                              │
+│       "file_name": "username.csv",                                                  │
+│       "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWUKYm9 │
+│     }                                                                               │
+│   },                                                                                │
+│   "status": "idle",                                                                 │
+│   "config": {                                                                       │
+│     "configurable": {                                                               │
+│       "model": "openai/gpt-4o-mini",                                                │
+│       "prompt": "You're generic AI assistant.\n\nMessage history:\n{messages}\n\nQu │
+│       "x-scheme": "https",                                                          │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "thread_ts": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                          │
+│       "x-real-ip": "88.8.42.162",                                                   │
+│       "x-user-id": "a9e4b727-54da-4b24-aae0-233464783bc9",                          │
+│       "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/53 │
+│       "x-request-id": "260e1cf4139244a2a86d02733c522ce4",                           │
+│       "checkpoint_id": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                      │
+│       "x-auth-scheme": "langsmith",                                                 │
+│       "x-forwarded-for": "88.8.42.162",                                             │
+│       "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us.la │
+│       "x-forwarded-port": "443",                                                    │
+│       "x-forwarded-proto": "https",                                                 │
+│       "x-forwarded-scheme": "https",                                                │
+│       "langgraph_auth_user": null,                                                  │
+│       "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",             │
+│       "langgraph_auth_permissions": [                                               │
+│         "authenticated"                                                             │
+│       ]                                                                             │
+│     }                                                                               │
+│   },                                                                                │
+│   "values": {                                                                       │
+│     "messages": [                                                                   │
+│       {                                                                             │
+│         "id": "2a7a21f7-6153-4456-890e-0a2105a10879",                               │
+│         "name": null,                                                               │
+│         "type": "human",                                                            │
+│         "content": "Are you doc agent?",                                            │
+│         "example": false,                                                           │
+│         "additional_kwargs": {},                                                    │
+│         "response_metadata": {}                                                     │
+│       },                                                                            │
+│       {                                                                             │
+│         "id": "run-7738fd5b-2156-49dd-bcfe-4ac4fbfc25ae-0",                         │
+│         "name": null,                                                               │
+│         "type": "ai",                                                               │
+│         "content": "No, I'm not doc agent. I'm a general-purpose AI assistant creat │
+│         "example": false,                                                           │
+│         "tool_calls": [],                                                           │
+│         "usage_metadata": {                                                         │
+│           "input_tokens": 26,                                                       │
+│           "total_tokens": 87,                                                       │
+│           "output_tokens": 61,                                                      │
+│           "input_token_details": {                                                  │
+│             "cache_read": 0,                                                        │
+│             "cache_creation": 0                                                     │
+│           }                                                                         │
+│         },                                                                          │
+│         "additional_kwargs": {},                                                    │
+│         "response_metadata": {                                                      │
+│           "id": "msg_018Z1qeRqhjLchEnVWkcdFkJ",                                     │
+│           "model": "claude-3-5-sonnet-20240620",                                    │
+│           "usage": {                                                                │
+│             "input_tokens": 26,                                                     │
+│             "output_tokens": 61,                                                    │
+│             "cache_read_input_tokens": 0,                                           │
+│             "cache_creation_input_tokens": 0                                        │
+│           },                                                                        │
+│           "model_name": "claude-3-5-sonnet-20240620",                               │
+│           "stop_reason": "end_turn",                                                │
+│           "stop_sequence": null                                                     │
+│         },                                                                          │
+│         "invalid_tool_calls": []                                                    │
+│       },                                                                            │
+│       {                                                                             │
+│         "id": "1a7c0e52-30a0-468a-920d-2b1889b58370",                               │
+│         "name": null,                                                               │
+│         "type": "human",                                                            │
+│         "content": "Hello again",                                                   │
+│         "example": false,                                                           │
+│         "additional_kwargs": {},                                                    │
+│         "response_metadata": {}                                                     │
+│       },                                                                            │
+│       {                                                                             │
+│         "id": "run-14add9f3-c2b0-46f0-8698-0c09678c49e7",                           │
+│         "name": null,                                                               │
+│         "type": "ai",                                                               │
+│         "content": "Hello! Welcome back! How can I assist you today?",              │
+│         "example": false,                                                           │
+│         "tool_calls": [],                                                           │
+│         "usage_metadata": null,                                                     │
+│         "additional_kwargs": {},                                                    │
+│         "response_metadata": {                                                      │
+│           "model_name": "gpt-4o-mini-2024-07-18",                                   │
+│           "finish_reason": "stop",                                                  │
+│           "system_fingerprint": "fp_b376dfbbd5"                                     │
+│         },                                                                          │
+│         "invalid_tool_calls": []                                                    │
+│       },                                                                            │
+│       {                                                                             │
+│         "id": "2c28235a-7d61-4582-9edf-56d5e1061af8",                               │
+│         "name": null,                                                               │
+│         "type": "human",                                                            │
+│         "content": "One more hello ",                                               │
+│         "example": false,                                                           │
+│         "additional_kwargs": {},                                                    │
+│         "response_metadata": {}                                                     │
+│       },                                                                            │
+│       {                                                                             │
+│         "id": "run-f21f6e59-ede2-4c39-bd73-346f2335f171",                           │
+│         "name": null,                                                               │
+│         "type": "ai",                                                               │
+│         "content": "Hello again! How can I help you today?",                        │
+│         "example": false,                                                           │
+│         "tool_calls": [],                                                           │
+│         "usage_metadata": null,                                                     │
+│         "additional_kwargs": {},                                                    │
+│         "response_metadata": {                                                      │
+│           "model_name": "gpt-4o-mini-2024-07-18",                                   │
+│           "finish_reason": "stop",                                                  │
+│           "system_fingerprint": "fp_b376dfbbd5"                                     │
+│         },                                                                          │
+│         "invalid_tool_calls": []                                                    │
+│       }                                                                             │
+│     ],                                                                              │
+│     "loop_step": 3                                                                  │
+│   },                                                                                │
+│   "interrupts": {}                                                                  │
+│ }                                                                                   │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
+
+📊 Thread Metadata and State
+╭────────────────────────────────── Thread Metadata ──────────────────────────────────╮
+│ {                                                                                   │
+│   "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                        │
+│   "graph_id": "generic_chat_agent",                                                 │
+│   "file_name": "username.csv",                                                      │
+│   "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                           │
+│   "document_metadata": {                                                            │
+│     "columns": [                                                                    │
+│       "Username",                                                                   │
+│       " Identifier",                                                                │
+│       "First name",                                                                 │
+│       "Last name"                                                                   │
+│     ],                                                                              │
+│     "num_rows": 140,                                                                │
+│     "file_name": "username.csv",                                                    │
+│     "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWUKYm9va │
+│   }                                                                                 │
+│ }                                                                                   │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
+
+✅ Successfully deserialized DocumentMetadata
+File name: username.csv
+Number of rows: 140
+Columns: Username,  Identifier, First name, Last name
+
+First 5 rows of the DataFrame:
+    Username   Identifier First name Last name
+0   booker12         9012     Rachel    Booker
+1     grey07         2070      Laura      Grey
+2  johnson81         4081      Craig   Johnson
+3  jenkins46         9346       Mary   Jenkins
+4    smith79         5079      Jamie     Smith
+
+📋 Thread History
+╭────────────────────────────────── Thread History ───────────────────────────────────╮
+│ [                                                                                   │
+│   {                                                                                 │
+│     "values": {                                                                     │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "content": "Are you doc agent?",                                          │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "2a7a21f7-6153-4456-890e-0a2105a10879",                             │
+│           "example": false                                                          │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "No, I'm not doc agent. I'm a general-purpose AI assistant cre │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {                                                    │
+│             "id": "msg_018Z1qeRqhjLchEnVWkcdFkJ",                                   │
+│             "model": "claude-3-5-sonnet-20240620",                                  │
+│             "stop_reason": "end_turn",                                              │
+│             "stop_sequence": null,                                                  │
+│             "usage": {                                                              │
+│               "cache_creation_input_tokens": 0,                                     │
+│               "cache_read_input_tokens": 0,                                         │
+│               "input_tokens": 26,                                                   │
+│               "output_tokens": 61                                                   │
+│             },                                                                      │
+│             "model_name": "claude-3-5-sonnet-20240620"                              │
+│           },                                                                        │
+│           "type": "ai",                                                             │
+│           "name": null,                                                             │
+│           "id": "run-7738fd5b-2156-49dd-bcfe-4ac4fbfc25ae-0",                       │
+│           "example": false,                                                         │
+│           "tool_calls": [],                                                         │
+│           "invalid_tool_calls": [],                                                 │
+│           "usage_metadata": {                                                       │
+│             "input_tokens": 26,                                                     │
+│             "output_tokens": 61,                                                    │
+│             "total_tokens": 87,                                                     │
+│             "input_token_details": {                                                │
+│               "cache_creation": 0,                                                  │
+│               "cache_read": 0                                                       │
+│             }                                                                       │
+│           }                                                                         │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "Hello again",                                                 │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "1a7c0e52-30a0-468a-920d-2b1889b58370",                             │
+│           "example": false                                                          │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "Hello! Welcome back! How can I assist you today?",            │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {                                                    │
+│             "finish_reason": "stop",                                                │
+│             "model_name": "gpt-4o-mini-2024-07-18",                                 │
+│             "system_fingerprint": "fp_b376dfbbd5"                                   │
+│           },                                                                        │
+│           "type": "ai",                                                             │
+│           "name": null,                                                             │
+│           "id": "run-14add9f3-c2b0-46f0-8698-0c09678c49e7",                         │
+│           "example": false,                                                         │
+│           "tool_calls": [],                                                         │
+│           "invalid_tool_calls": [],                                                 │
+│           "usage_metadata": null                                                    │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "One more hello ",                                             │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "2c28235a-7d61-4582-9edf-56d5e1061af8",                             │
+│           "example": false                                                          │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "Hello again! How can I help you today?",                      │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {                                                    │
+│             "finish_reason": "stop",                                                │
+│             "model_name": "gpt-4o-mini-2024-07-18",                                 │
+│             "system_fingerprint": "fp_b376dfbbd5"                                   │
+│           },                                                                        │
+│           "type": "ai",                                                             │
+│           "name": null,                                                             │
+│           "id": "run-f21f6e59-ede2-4c39-bd73-346f2335f171",                         │
+│           "example": false,                                                         │
+│           "tool_calls": [],                                                         │
+│           "invalid_tool_calls": [],                                                 │
+│           "usage_metadata": null                                                    │
+│         }                                                                           │
+│       ],                                                                            │
+│       "loop_step": 3                                                                │
+│     },                                                                              │
+│     "next": [],                                                                     │
+│     "tasks": [],                                                                    │
+│     "metadata": {                                                                   │
+│       "step": 7,                                                                    │
+│       "model": "openai/gpt-4o-mini",                                                │
+│       "prompt": "You're generic AI assistant.\n\nMessage history:\n{messages}\n\nQu │
+│       "run_id": "1f00f8cd-7375-6c5b-b832-7e033da81c92",                             │
+│       "source": "loop",                                                             │
+│       "writes": {                                                                   │
+│         "chat_with_agent": {                                                        │
+│           "messages": [                                                             │
+│             {                                                                       │
+│               "id": "run-f21f6e59-ede2-4c39-bd73-346f2335f171",                     │
+│               "name": null,                                                         │
+│               "type": "ai",                                                         │
+│               "content": "Hello again! How can I help you today?",                  │
+│               "example": false,                                                     │
+│               "tool_calls": [],                                                     │
+│               "usage_metadata": null,                                               │
+│               "additional_kwargs": {},                                              │
+│               "response_metadata": {                                                │
+│                 "model_name": "gpt-4o-mini-2024-07-18",                             │
+│                 "finish_reason": "stop",                                            │
+│                 "system_fingerprint": "fp_b376dfbbd5"                               │
+│               },                                                                    │
+│               "invalid_tool_calls": []                                              │
+│             }                                                                       │
+│           ],                                                                        │
+│           "loop_step": 1                                                            │
+│         }                                                                           │
+│       },                                                                            │
+│       "parents": {},                                                                │
+│       "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                    │
+│       "graph_id": "generic_chat_agent",                                             │
+│       "x-scheme": "https",                                                          │
+│       "file_name": "username.csv",                                                  │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "thread_ts": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                          │
+│       "x-real-ip": "88.8.42.162",                                                   │
+│       "x-user-id": "a9e4b727-54da-4b24-aae0-233464783bc9",                          │
+│       "created_by": "system",                                                       │
+│       "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/53 │
+│       "from_studio": true,                                                          │
+│       "run_attempt": 1,                                                             │
+│       "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                       │
+│       "x-request-id": "260e1cf4139244a2a86d02733c522ce4",                           │
+│       "checkpoint_id": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                      │
+│       "x-auth-scheme": "langsmith",                                                 │
+│       "langgraph_host": "saas",                                                     │
+│       "langgraph_plan": "enterprise",                                               │
+│       "x-forwarded-for": "88.8.42.162",                                             │
+│       "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us.la │
+│       "x-forwarded-port": "443",                                                    │
+│       "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420e │
+│       "document_metadata": {                                                        │
+│         "columns": [                                                                │
+│           "Username",                                                               │
+│           " Identifier",                                                            │
+│           "First name",                                                             │
+│           "Last name"                                                               │
+│         ],                                                                          │
+│         "num_rows": 140,                                                            │
+│         "file_name": "username.csv",                                                │
+│         "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWUKY │
+│       },                                                                            │
+│       "langgraph_api_url": null,                                                    │
+│       "langgraph_version": "0.3.21",                                                │
+│       "x-forwarded-proto": "https",                                                 │
+│       "x-forwarded-scheme": "https",                                                │
+│       "langgraph_auth_user": null,                                                  │
+│       "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",             │
+│       "langgraph_auth_permissions": [                                               │
+│         "authenticated"                                                             │
+│       ]                                                                             │
+│     },                                                                              │
+│     "created_at": "2025-04-02T06:36:43.987065+00:00",                               │
+│     "checkpoint": {                                                                 │
+│       "checkpoint_id": "1f00f8cd-7dc6-6d9e-8007-2ae6d83deee0",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "parent_checkpoint": {                                                          │
+│       "checkpoint_id": "1f00f8cd-73c9-66c0-8006-8403a709ea8f",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "checkpoint_id": "1f00f8cd-7dc6-6d9e-8007-2ae6d83deee0",                        │
+│     "parent_checkpoint_id": "1f00f8cd-73c9-66c0-8006-8403a709ea8f"                  │
+│   },                                                                                │
+│   {                                                                                 │
+│     "values": {                                                                     │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "content": "Are you doc agent?",                                          │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "2a7a21f7-6153-4456-890e-0a2105a10879",                             │
+│           "example": false                                                          │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "No, I'm not doc agent. I'm a general-purpose AI assistant cre │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {                                                    │
+│             "id": "msg_018Z1qeRqhjLchEnVWkcdFkJ",                                   │
+│             "model": "claude-3-5-sonnet-20240620",                                  │
+│             "stop_reason": "end_turn",                                              │
+│             "stop_sequence": null,                                                  │
+│             "usage": {                                                              │
+│               "cache_creation_input_tokens": 0,                                     │
+│               "cache_read_input_tokens": 0,                                         │
+│               "input_tokens": 26,                                                   │
+│               "output_tokens": 61                                                   │
+│             },                                                                      │
+│             "model_name": "claude-3-5-sonnet-20240620"                              │
+│           },                                                                        │
+│           "type": "ai",                                                             │
+│           "name": null,                                                             │
+│           "id": "run-7738fd5b-2156-49dd-bcfe-4ac4fbfc25ae-0",                       │
+│           "example": false,                                                         │
+│           "tool_calls": [],                                                         │
+│           "invalid_tool_calls": [],                                                 │
+│           "usage_metadata": {                                                       │
+│             "input_tokens": 26,                                                     │
+│             "output_tokens": 61,                                                    │
+│             "total_tokens": 87,                                                     │
+│             "input_token_details": {                                                │
+│               "cache_creation": 0,                                                  │
+│               "cache_read": 0                                                       │
+│             }                                                                       │
+│           }                                                                         │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "Hello again",                                                 │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "1a7c0e52-30a0-468a-920d-2b1889b58370",                             │
+│           "example": false                                                          │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "Hello! Welcome back! How can I assist you today?",            │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {                                                    │
+│             "finish_reason": "stop",                                                │
+│             "model_name": "gpt-4o-mini-2024-07-18",                                 │
+│             "system_fingerprint": "fp_b376dfbbd5"                                   │
+│           },                                                                        │
+│           "type": "ai",                                                             │
+│           "name": null,                                                             │
+│           "id": "run-14add9f3-c2b0-46f0-8698-0c09678c49e7",                         │
+│           "example": false,                                                         │
+│           "tool_calls": [],                                                         │
+│           "invalid_tool_calls": [],                                                 │
+│           "usage_metadata": null                                                    │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "One more hello ",                                             │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "2c28235a-7d61-4582-9edf-56d5e1061af8",                             │
+│           "example": false                                                          │
+│         }                                                                           │
+│       ],                                                                            │
+│       "loop_step": 2                                                                │
+│     },                                                                              │
+│     "next": [                                                                       │
+│       "chat_with_agent"                                                             │
+│     ],                                                                              │
+│     "tasks": [                                                                      │
+│       {                                                                             │
+│         "id": "1de525de-3960-d632-78b9-a4be4c5c5e24",                               │
+│         "name": "chat_with_agent",                                                  │
+│         "path": [                                                                   │
+│           "__pregel_pull",                                                          │
+│           "chat_with_agent"                                                         │
+│         ],                                                                          │
+│         "error": null,                                                              │
+│         "interrupts": [],                                                           │
+│         "checkpoint": null,                                                         │
+│         "state": null,                                                              │
+│         "result": {                                                                 │
+│           "messages": [                                                             │
+│             {                                                                       │
+│               "content": "Hello again! How can I help you today?",                  │
+│               "additional_kwargs": {},                                              │
+│               "response_metadata": {                                                │
+│                 "finish_reason": "stop",                                            │
+│                 "model_name": "gpt-4o-mini-2024-07-18",                             │
+│                 "system_fingerprint": "fp_b376dfbbd5"                               │
+│               },                                                                    │
+│               "type": "ai",                                                         │
+│               "name": null,                                                         │
+│               "id": "run-f21f6e59-ede2-4c39-bd73-346f2335f171",                     │
+│               "example": false,                                                     │
+│               "tool_calls": [],                                                     │
+│               "invalid_tool_calls": [],                                             │
+│               "usage_metadata": null                                                │
+│             }                                                                       │
+│           ],                                                                        │
+│           "loop_step": 1                                                            │
+│         }                                                                           │
+│       }                                                                             │
+│     ],                                                                              │
+│     "metadata": {                                                                   │
+│       "step": 6,                                                                    │
+│       "model": "openai/gpt-4o-mini",                                                │
+│       "prompt": "You're generic AI assistant.\n\nMessage history:\n{messages}\n\nQu │
+│       "run_id": "1f00f8cd-7375-6c5b-b832-7e033da81c92",                             │
+│       "source": "loop",                                                             │
+│       "writes": null,                                                               │
+│       "parents": {},                                                                │
+│       "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                    │
+│       "graph_id": "generic_chat_agent",                                             │
+│       "x-scheme": "https",                                                          │
+│       "file_name": "username.csv",                                                  │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "thread_ts": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                          │
+│       "x-real-ip": "88.8.42.162",                                                   │
+│       "x-user-id": "a9e4b727-54da-4b24-aae0-233464783bc9",                          │
+│       "created_by": "system",                                                       │
+│       "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/53 │
+│       "from_studio": true,                                                          │
+│       "run_attempt": 1,                                                             │
+│       "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                       │
+│       "x-request-id": "260e1cf4139244a2a86d02733c522ce4",                           │
+│       "checkpoint_id": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                      │
+│       "x-auth-scheme": "langsmith",                                                 │
+│       "langgraph_host": "saas",                                                     │
+│       "langgraph_plan": "enterprise",                                               │
+│       "x-forwarded-for": "88.8.42.162",                                             │
+│       "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us.la │
+│       "x-forwarded-port": "443",                                                    │
+│       "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420e │
+│       "document_metadata": {                                                        │
+│         "columns": [                                                                │
+│           "Username",                                                               │
+│           " Identifier",                                                            │
+│           "First name",                                                             │
+│           "Last name"                                                               │
+│         ],                                                                          │
+│         "num_rows": 140,                                                            │
+│         "file_name": "username.csv",                                                │
+│         "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWUKY │
+│       },                                                                            │
+│       "langgraph_api_url": null,                                                    │
+│       "langgraph_version": "0.3.21",                                                │
+│       "x-forwarded-proto": "https",                                                 │
+│       "x-forwarded-scheme": "https",                                                │
+│       "langgraph_auth_user": null,                                                  │
+│       "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",             │
+│       "langgraph_auth_permissions": [                                               │
+│         "authenticated"                                                             │
+│       ]                                                                             │
+│     },                                                                              │
+│     "created_at": "2025-04-02T06:36:42.939542+00:00",                               │
+│     "checkpoint": {                                                                 │
+│       "checkpoint_id": "1f00f8cd-73c9-66c0-8006-8403a709ea8f",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "parent_checkpoint": {                                                          │
+│       "checkpoint_id": "1f00f8cd-73b5-606b-8005-aabfa7e271b9",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "checkpoint_id": "1f00f8cd-73c9-66c0-8006-8403a709ea8f",                        │
+│     "parent_checkpoint_id": "1f00f8cd-73b5-606b-8005-aabfa7e271b9"                  │
+│   },                                                                                │
+│   {                                                                                 │
+│     "values": {                                                                     │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "content": "Are you doc agent?",                                          │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "2a7a21f7-6153-4456-890e-0a2105a10879",                             │
+│           "example": false                                                          │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "No, I'm not doc agent. I'm a general-purpose AI assistant cre │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {                                                    │
+│             "id": "msg_018Z1qeRqhjLchEnVWkcdFkJ",                                   │
+│             "model": "claude-3-5-sonnet-20240620",                                  │
+│             "stop_reason": "end_turn",                                              │
+│             "stop_sequence": null,                                                  │
+│             "usage": {                                                              │
+│               "cache_creation_input_tokens": 0,                                     │
+│               "cache_read_input_tokens": 0,                                         │
+│               "input_tokens": 26,                                                   │
+│               "output_tokens": 61                                                   │
+│             },                                                                      │
+│             "model_name": "claude-3-5-sonnet-20240620"                              │
+│           },                                                                        │
+│           "type": "ai",                                                             │
+│           "name": null,                                                             │
+│           "id": "run-7738fd5b-2156-49dd-bcfe-4ac4fbfc25ae-0",                       │
+│           "example": false,                                                         │
+│           "tool_calls": [],                                                         │
+│           "invalid_tool_calls": [],                                                 │
+│           "usage_metadata": {                                                       │
+│             "input_tokens": 26,                                                     │
+│             "output_tokens": 61,                                                    │
+│             "total_tokens": 87,                                                     │
+│             "input_token_details": {                                                │
+│               "cache_creation": 0,                                                  │
+│               "cache_read": 0                                                       │
+│             }                                                                       │
+│           }                                                                         │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "Hello again",                                                 │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "1a7c0e52-30a0-468a-920d-2b1889b58370",                             │
+│           "example": false                                                          │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "Hello! Welcome back! How can I assist you today?",            │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {                                                    │
+│             "finish_reason": "stop",                                                │
+│             "model_name": "gpt-4o-mini-2024-07-18",                                 │
+│             "system_fingerprint": "fp_b376dfbbd5"                                   │
+│           },                                                                        │
+│           "type": "ai",                                                             │
+│           "name": null,                                                             │
+│           "id": "run-14add9f3-c2b0-46f0-8698-0c09678c49e7",                         │
+│           "example": false,                                                         │
+│           "tool_calls": [],                                                         │
+│           "invalid_tool_calls": [],                                                 │
+│           "usage_metadata": null                                                    │
+│         }                                                                           │
+│       ],                                                                            │
+│       "loop_step": 2                                                                │
+│     },                                                                              │
+│     "next": [                                                                       │
+│       "__start__"                                                                   │
+│     ],                                                                              │
+│     "tasks": [                                                                      │
+│       {                                                                             │
+│         "id": "a53d24c7-5864-9a3b-c73e-f7fab7521688",                               │
+│         "name": "__start__",                                                        │
+│         "path": [                                                                   │
+│           "__pregel_pull",                                                          │
+│           "__start__"                                                               │
+│         ],                                                                          │
+│         "error": null,                                                              │
+│         "interrupts": [],                                                           │
+│         "checkpoint": null,                                                         │
+│         "state": null,                                                              │
+│         "result": {                                                                 │
+│           "messages": [                                                             │
+│             {                                                                       │
+│               "type": "human",                                                      │
+│               "content": "One more hello "                                          │
+│             }                                                                       │
+│           ]                                                                         │
+│         }                                                                           │
+│       }                                                                             │
+│     ],                                                                              │
+│     "metadata": {                                                                   │
+│       "step": 5,                                                                    │
+│       "model": "openai/gpt-4o-mini",                                                │
+│       "prompt": "You're generic AI assistant.\n\nMessage history:\n{messages}\n\nQu │
+│       "run_id": "1f00f8cd-7375-6c5b-b832-7e033da81c92",                             │
+│       "source": "input",                                                            │
+│       "writes": {                                                                   │
+│         "__start__": {                                                              │
+│           "messages": [                                                             │
+│             {                                                                       │
+│               "type": "human",                                                      │
+│               "content": "One more hello "                                          │
+│             }                                                                       │
+│           ]                                                                         │
+│         }                                                                           │
+│       },                                                                            │
+│       "parents": {},                                                                │
+│       "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                    │
+│       "graph_id": "generic_chat_agent",                                             │
+│       "x-scheme": "https",                                                          │
+│       "file_name": "username.csv",                                                  │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "thread_ts": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                          │
+│       "x-real-ip": "88.8.42.162",                                                   │
+│       "x-user-id": "a9e4b727-54da-4b24-aae0-233464783bc9",                          │
+│       "created_by": "system",                                                       │
+│       "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/53 │
+│       "from_studio": true,                                                          │
+│       "run_attempt": 1,                                                             │
+│       "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                       │
+│       "x-request-id": "260e1cf4139244a2a86d02733c522ce4",                           │
+│       "checkpoint_id": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                      │
+│       "x-auth-scheme": "langsmith",                                                 │
+│       "langgraph_host": "saas",                                                     │
+│       "langgraph_plan": "enterprise",                                               │
+│       "x-forwarded-for": "88.8.42.162",                                             │
+│       "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us.la │
+│       "x-forwarded-port": "443",                                                    │
+│       "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420e │
+│       "document_metadata": {                                                        │
+│         "columns": [                                                                │
+│           "Username",                                                               │
+│           " Identifier",                                                            │
+│           "First name",                                                             │
+│           "Last name"                                                               │
+│         ],                                                                          │
+│         "num_rows": 140,                                                            │
+│         "file_name": "username.csv",                                                │
+│         "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWUKY │
+│       },                                                                            │
+│       "langgraph_api_url": null,                                                    │
+│       "langgraph_version": "0.3.21",                                                │
+│       "x-forwarded-proto": "https",                                                 │
+│       "x-forwarded-scheme": "https",                                                │
+│       "langgraph_auth_user": null,                                                  │
+│       "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",             │
+│       "langgraph_auth_permissions": [                                               │
+│         "authenticated"                                                             │
+│       ]                                                                             │
+│     },                                                                              │
+│     "created_at": "2025-04-02T06:36:42.931185+00:00",                               │
+│     "checkpoint": {                                                                 │
+│       "checkpoint_id": "1f00f8cd-73b5-606b-8005-aabfa7e271b9",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "parent_checkpoint": {                                                          │
+│       "checkpoint_id": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "checkpoint_id": "1f00f8cd-73b5-606b-8005-aabfa7e271b9",                        │
+│     "parent_checkpoint_id": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39"                  │
+│   },                                                                                │
+│   {                                                                                 │
+│     "values": {                                                                     │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "content": "Are you doc agent?",                                          │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "2a7a21f7-6153-4456-890e-0a2105a10879",                             │
+│           "example": false                                                          │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "No, I'm not doc agent. I'm a general-purpose AI assistant cre │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {                                                    │
+│             "id": "msg_018Z1qeRqhjLchEnVWkcdFkJ",                                   │
+│             "model": "claude-3-5-sonnet-20240620",                                  │
+│             "stop_reason": "end_turn",                                              │
+│             "stop_sequence": null,                                                  │
+│             "usage": {                                                              │
+│               "cache_creation_input_tokens": 0,                                     │
+│               "cache_read_input_tokens": 0,                                         │
+│               "input_tokens": 26,                                                   │
+│               "output_tokens": 61                                                   │
+│             },                                                                      │
+│             "model_name": "claude-3-5-sonnet-20240620"                              │
+│           },                                                                        │
+│           "type": "ai",                                                             │
+│           "name": null,                                                             │
+│           "id": "run-7738fd5b-2156-49dd-bcfe-4ac4fbfc25ae-0",                       │
+│           "example": false,                                                         │
+│           "tool_calls": [],                                                         │
+│           "invalid_tool_calls": [],                                                 │
+│           "usage_metadata": {                                                       │
+│             "input_tokens": 26,                                                     │
+│             "output_tokens": 61,                                                    │
+│             "total_tokens": 87,                                                     │
+│             "input_token_details": {                                                │
+│               "cache_creation": 0,                                                  │
+│               "cache_read": 0                                                       │
+│             }                                                                       │
+│           }                                                                         │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "Hello again",                                                 │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "1a7c0e52-30a0-468a-920d-2b1889b58370",                             │
+│           "example": false                                                          │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "Hello! Welcome back! How can I assist you today?",            │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {                                                    │
+│             "finish_reason": "stop",                                                │
+│             "model_name": "gpt-4o-mini-2024-07-18",                                 │
+│             "system_fingerprint": "fp_b376dfbbd5"                                   │
+│           },                                                                        │
+│           "type": "ai",                                                             │
+│           "name": null,                                                             │
+│           "id": "run-14add9f3-c2b0-46f0-8698-0c09678c49e7",                         │
+│           "example": false,                                                         │
+│           "tool_calls": [],                                                         │
+│           "invalid_tool_calls": [],                                                 │
+│           "usage_metadata": null                                                    │
+│         }                                                                           │
+│       ],                                                                            │
+│       "loop_step": 2                                                                │
+│     },                                                                              │
+│     "next": [],                                                                     │
+│     "tasks": [],                                                                    │
+│     "metadata": {                                                                   │
+│       "step": 4,                                                                    │
+│       "model": "openai/gpt-4o-mini",                                                │
+│       "prompt": "You're generic AI assistant.\n\nMessage history:\n{messages}\n\nQu │
+│       "run_id": "1f00f8cc-a770-6512-998c-1e4ed15f38d1",                             │
+│       "source": "loop",                                                             │
+│       "writes": {                                                                   │
+│         "chat_with_agent": {                                                        │
+│           "messages": [                                                             │
+│             {                                                                       │
+│               "id": "run-14add9f3-c2b0-46f0-8698-0c09678c49e7",                     │
+│               "name": null,                                                         │
+│               "type": "ai",                                                         │
+│               "content": "Hello! Welcome back! How can I assist you today?",        │
+│               "example": false,                                                     │
+│               "tool_calls": [],                                                     │
+│               "usage_metadata": null,                                               │
+│               "additional_kwargs": {},                                              │
+│               "response_metadata": {                                                │
+│                 "model_name": "gpt-4o-mini-2024-07-18",                             │
+│                 "finish_reason": "stop",                                            │
+│                 "system_fingerprint": "fp_b376dfbbd5"                               │
+│               },                                                                    │
+│               "invalid_tool_calls": []                                              │
+│             }                                                                       │
+│           ],                                                                        │
+│           "loop_step": 1                                                            │
+│         }                                                                           │
+│       },                                                                            │
+│       "parents": {},                                                                │
+│       "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                    │
+│       "graph_id": "generic_chat_agent",                                             │
+│       "x-scheme": "https",                                                          │
+│       "file_name": "username.csv",                                                  │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "thread_ts": "1f00f8b5-fba0-604a-8001-dc75602e2e36",                          │
+│       "x-real-ip": "88.8.42.162",                                                   │
+│       "x-user-id": "a9e4b727-54da-4b24-aae0-233464783bc9",                          │
+│       "created_by": "system",                                                       │
+│       "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/53 │
+│       "from_studio": true,                                                          │
+│       "run_attempt": 1,                                                             │
+│       "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                       │
+│       "x-request-id": "e21b259469093d538e30161b458380c6",                           │
+│       "checkpoint_id": "1f00f8b5-fba0-604a-8001-dc75602e2e36",                      │
+│       "x-auth-scheme": "langsmith",                                                 │
+│       "langgraph_host": "saas",                                                     │
+│       "langgraph_plan": "enterprise",                                               │
+│       "x-forwarded-for": "88.8.42.162",                                             │
+│       "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us.la │
+│       "x-forwarded-port": "443",                                                    │
+│       "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420e │
+│       "document_metadata": {                                                        │
+│         "columns": [                                                                │
+│           "Username",                                                               │
+│           " Identifier",                                                            │
+│           "First name",                                                             │
+│           "Last name"                                                               │
+│         ],                                                                          │
+│         "num_rows": 140,                                                            │
+│         "file_name": "username.csv",                                                │
+│         "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWUKY │
+│       },                                                                            │
+│       "langgraph_api_url": null,                                                    │
+│       "langgraph_version": "0.3.21",                                                │
+│       "x-forwarded-proto": "https",                                                 │
+│       "x-forwarded-scheme": "https",                                                │
+│       "langgraph_auth_user": null,                                                  │
+│       "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",             │
+│       "langgraph_auth_permissions": [                                               │
+│         "authenticated"                                                             │
+│       ]                                                                             │
+│     },                                                                              │
+│     "created_at": "2025-04-02T06:36:23.521385+00:00",                               │
+│     "checkpoint": {                                                                 │
+│       "checkpoint_id": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "parent_checkpoint": {                                                          │
+│       "checkpoint_id": "1f00f8cc-a7da-6146-8003-4b27ad4b5172",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "checkpoint_id": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                        │
+│     "parent_checkpoint_id": "1f00f8cc-a7da-6146-8003-4b27ad4b5172"                  │
+│   },                                                                                │
+│   {                                                                                 │
+│     "values": {                                                                     │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "content": "Are you doc agent?",                                          │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "2a7a21f7-6153-4456-890e-0a2105a10879",                             │
+│           "example": false                                                          │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "No, I'm not doc agent. I'm a general-purpose AI assistant cre │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {                                                    │
+│             "id": "msg_018Z1qeRqhjLchEnVWkcdFkJ",                                   │
+│             "model": "claude-3-5-sonnet-20240620",                                  │
+│             "stop_reason": "end_turn",                                              │
+│             "stop_sequence": null,                                                  │
+│             "usage": {                                                              │
+│               "cache_creation_input_tokens": 0,                                     │
+│               "cache_read_input_tokens": 0,                                         │
+│               "input_tokens": 26,                                                   │
+│               "output_tokens": 61                                                   │
+│             },                                                                      │
+│             "model_name": "claude-3-5-sonnet-20240620"                              │
+│           },                                                                        │
+│           "type": "ai",                                                             │
+│           "name": null,                                                             │
+│           "id": "run-7738fd5b-2156-49dd-bcfe-4ac4fbfc25ae-0",                       │
+│           "example": false,                                                         │
+│           "tool_calls": [],                                                         │
+│           "invalid_tool_calls": [],                                                 │
+│           "usage_metadata": {                                                       │
+│             "input_tokens": 26,                                                     │
+│             "output_tokens": 61,                                                    │
+│             "total_tokens": 87,                                                     │
+│             "input_token_details": {                                                │
+│               "cache_creation": 0,                                                  │
+│               "cache_read": 0                                                       │
+│             }                                                                       │
+│           }                                                                         │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "Hello again",                                                 │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "1a7c0e52-30a0-468a-920d-2b1889b58370",                             │
+│           "example": false                                                          │
+│         }                                                                           │
+│       ],                                                                            │
+│       "loop_step": 1                                                                │
+│     },                                                                              │
+│     "next": [                                                                       │
+│       "chat_with_agent"                                                             │
+│     ],                                                                              │
+│     "tasks": [                                                                      │
+│       {                                                                             │
+│         "id": "af97850c-9d97-0511-d5ab-9ae88a66c4fb",                               │
+│         "name": "chat_with_agent",                                                  │
+│         "path": [                                                                   │
+│           "__pregel_pull",                                                          │
+│           "chat_with_agent"                                                         │
+│         ],                                                                          │
+│         "error": null,                                                              │
+│         "interrupts": [],                                                           │
+│         "checkpoint": null,                                                         │
+│         "state": null,                                                              │
+│         "result": {                                                                 │
+│           "messages": [                                                             │
+│             {                                                                       │
+│               "content": "Hello! Welcome back! How can I assist you today?",        │
+│               "additional_kwargs": {},                                              │
+│               "response_metadata": {                                                │
+│                 "finish_reason": "stop",                                            │
+│                 "model_name": "gpt-4o-mini-2024-07-18",                             │
+│                 "system_fingerprint": "fp_b376dfbbd5"                               │
+│               },                                                                    │
+│               "type": "ai",                                                         │
+│               "name": null,                                                         │
+│               "id": "run-14add9f3-c2b0-46f0-8698-0c09678c49e7",                     │
+│               "example": false,                                                     │
+│               "tool_calls": [],                                                     │
+│               "invalid_tool_calls": [],                                             │
+│               "usage_metadata": null                                                │
+│             }                                                                       │
+│           ],                                                                        │
+│           "loop_step": 1                                                            │
+│         }                                                                           │
+│       }                                                                             │
+│     ],                                                                              │
+│     "metadata": {                                                                   │
+│       "step": 3,                                                                    │
+│       "model": "openai/gpt-4o-mini",                                                │
+│       "prompt": "You're generic AI assistant.\n\nMessage history:\n{messages}\n\nQu │
+│       "run_id": "1f00f8cc-a770-6512-998c-1e4ed15f38d1",                             │
+│       "source": "loop",                                                             │
+│       "writes": null,                                                               │
+│       "parents": {},                                                                │
+│       "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                    │
+│       "graph_id": "generic_chat_agent",                                             │
+│       "x-scheme": "https",                                                          │
+│       "file_name": "username.csv",                                                  │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "thread_ts": "1f00f8b5-fba0-604a-8001-dc75602e2e36",                          │
+│       "x-real-ip": "88.8.42.162",                                                   │
+│       "x-user-id": "a9e4b727-54da-4b24-aae0-233464783bc9",                          │
+│       "created_by": "system",                                                       │
+│       "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/53 │
+│       "from_studio": true,                                                          │
+│       "run_attempt": 1,                                                             │
+│       "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                       │
+│       "x-request-id": "e21b259469093d538e30161b458380c6",                           │
+│       "checkpoint_id": "1f00f8b5-fba0-604a-8001-dc75602e2e36",                      │
+│       "x-auth-scheme": "langsmith",                                                 │
+│       "langgraph_host": "saas",                                                     │
+│       "langgraph_plan": "enterprise",                                               │
+│       "x-forwarded-for": "88.8.42.162",                                             │
+│       "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us.la │
+│       "x-forwarded-port": "443",                                                    │
+│       "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420e │
+│       "document_metadata": {                                                        │
+│         "columns": [                                                                │
+│           "Username",                                                               │
+│           " Identifier",                                                            │
+│           "First name",                                                             │
+│           "Last name"                                                               │
+│         ],                                                                          │
+│         "num_rows": 140,                                                            │
+│         "file_name": "username.csv",                                                │
+│         "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWUKY │
+│       },                                                                            │
+│       "langgraph_api_url": null,                                                    │
+│       "langgraph_version": "0.3.21",                                                │
+│       "x-forwarded-proto": "https",                                                 │
+│       "x-forwarded-scheme": "https",                                                │
+│       "langgraph_auth_user": null,                                                  │
+│       "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",             │
+│       "langgraph_auth_permissions": [                                               │
+│         "authenticated"                                                             │
+│       ]                                                                             │
+│     },                                                                              │
+│     "created_at": "2025-04-02T06:36:21.555413+00:00",                               │
+│     "checkpoint": {                                                                 │
+│       "checkpoint_id": "1f00f8cc-a7da-6146-8003-4b27ad4b5172",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "parent_checkpoint": {                                                          │
+│       "checkpoint_id": "1f00f8cc-a7c2-660c-8002-d1f05a1db88b",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "checkpoint_id": "1f00f8cc-a7da-6146-8003-4b27ad4b5172",                        │
+│     "parent_checkpoint_id": "1f00f8cc-a7c2-660c-8002-d1f05a1db88b"                  │
+│   },                                                                                │
+│   {                                                                                 │
+│     "values": {                                                                     │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "content": "Are you doc agent?",                                          │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "2a7a21f7-6153-4456-890e-0a2105a10879",                             │
+│           "example": false                                                          │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "No, I'm not doc agent. I'm a general-purpose AI assistant cre │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {                                                    │
+│             "id": "msg_018Z1qeRqhjLchEnVWkcdFkJ",                                   │
+│             "model": "claude-3-5-sonnet-20240620",                                  │
+│             "stop_reason": "end_turn",                                              │
+│             "stop_sequence": null,                                                  │
+│             "usage": {                                                              │
+│               "cache_creation_input_tokens": 0,                                     │
+│               "cache_read_input_tokens": 0,                                         │
+│               "input_tokens": 26,                                                   │
+│               "output_tokens": 61                                                   │
+│             },                                                                      │
+│             "model_name": "claude-3-5-sonnet-20240620"                              │
+│           },                                                                        │
+│           "type": "ai",                                                             │
+│           "name": null,                                                             │
+│           "id": "run-7738fd5b-2156-49dd-bcfe-4ac4fbfc25ae-0",                       │
+│           "example": false,                                                         │
+│           "tool_calls": [],                                                         │
+│           "invalid_tool_calls": [],                                                 │
+│           "usage_metadata": {                                                       │
+│             "input_tokens": 26,                                                     │
+│             "output_tokens": 61,                                                    │
+│             "total_tokens": 87,                                                     │
+│             "input_token_details": {                                                │
+│               "cache_read": 0,                                                      │
+│               "cache_creation": 0                                                   │
+│             }                                                                       │
+│           }                                                                         │
+│         }                                                                           │
+│       ],                                                                            │
+│       "loop_step": 1                                                                │
+│     },                                                                              │
+│     "next": [                                                                       │
+│       "__start__"                                                                   │
+│     ],                                                                              │
+│     "tasks": [                                                                      │
+│       {                                                                             │
+│         "id": "c2974006-9206-0e96-8f55-2615f0a63b29",                               │
+│         "name": "__start__",                                                        │
+│         "path": [                                                                   │
+│           "__pregel_pull",                                                          │
+│           "__start__"                                                               │
+│         ],                                                                          │
+│         "error": null,                                                              │
+│         "interrupts": [],                                                           │
+│         "checkpoint": null,                                                         │
+│         "state": null,                                                              │
+│         "result": {                                                                 │
+│           "messages": [                                                             │
+│             {                                                                       │
+│               "type": "human",                                                      │
+│               "content": "Hello again"                                              │
+│             }                                                                       │
+│           ]                                                                         │
+│         }                                                                           │
+│       }                                                                             │
+│     ],                                                                              │
+│     "metadata": {                                                                   │
+│       "step": 2,                                                                    │
+│       "model": "openai/gpt-4o-mini",                                                │
+│       "prompt": "You're generic AI assistant.\n\nMessage history:\n{messages}\n\nQu │
+│       "run_id": "1f00f8cc-a770-6512-998c-1e4ed15f38d1",                             │
+│       "source": "input",                                                            │
+│       "writes": {                                                                   │
+│         "__start__": {                                                              │
+│           "messages": [                                                             │
+│             {                                                                       │
+│               "type": "human",                                                      │
+│               "content": "Hello again"                                              │
+│             }                                                                       │
+│           ]                                                                         │
+│         }                                                                           │
+│       },                                                                            │
+│       "parents": {},                                                                │
+│       "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                    │
+│       "graph_id": "generic_chat_agent",                                             │
+│       "x-scheme": "https",                                                          │
+│       "file_name": "username.csv",                                                  │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "thread_ts": "1f00f8b5-fba0-604a-8001-dc75602e2e36",                          │
+│       "x-real-ip": "88.8.42.162",                                                   │
+│       "x-user-id": "a9e4b727-54da-4b24-aae0-233464783bc9",                          │
+│       "created_by": "system",                                                       │
+│       "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/53 │
+│       "from_studio": true,                                                          │
+│       "run_attempt": 1,                                                             │
+│       "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                       │
+│       "x-request-id": "e21b259469093d538e30161b458380c6",                           │
+│       "checkpoint_id": "1f00f8b5-fba0-604a-8001-dc75602e2e36",                      │
+│       "x-auth-scheme": "langsmith",                                                 │
+│       "langgraph_host": "saas",                                                     │
+│       "langgraph_plan": "enterprise",                                               │
+│       "x-forwarded-for": "88.8.42.162",                                             │
+│       "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us.la │
+│       "x-forwarded-port": "443",                                                    │
+│       "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420e │
+│       "document_metadata": {                                                        │
+│         "columns": [                                                                │
+│           "Username",                                                               │
+│           " Identifier",                                                            │
+│           "First name",                                                             │
+│           "Last name"                                                               │
+│         ],                                                                          │
+│         "num_rows": 140,                                                            │
+│         "file_name": "username.csv",                                                │
+│         "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWUKY │
+│       },                                                                            │
+│       "langgraph_api_url": null,                                                    │
+│       "langgraph_version": "0.3.21",                                                │
+│       "x-forwarded-proto": "https",                                                 │
+│       "x-forwarded-scheme": "https",                                                │
+│       "langgraph_auth_user": null,                                                  │
+│       "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",             │
+│       "langgraph_auth_permissions": [                                               │
+│         "authenticated"                                                             │
+│       ]                                                                             │
+│     },                                                                              │
+│     "created_at": "2025-04-02T06:36:21.545695+00:00",                               │
+│     "checkpoint": {                                                                 │
+│       "checkpoint_id": "1f00f8cc-a7c2-660c-8002-d1f05a1db88b",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "parent_checkpoint": {                                                          │
+│       "checkpoint_id": "1f00f8b5-fba0-604a-8001-dc75602e2e36",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "checkpoint_id": "1f00f8cc-a7c2-660c-8002-d1f05a1db88b",                        │
+│     "parent_checkpoint_id": "1f00f8b5-fba0-604a-8001-dc75602e2e36"                  │
+│   },                                                                                │
+│   {                                                                                 │
+│     "values": {                                                                     │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "content": "Are you doc agent?",                                          │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "2a7a21f7-6153-4456-890e-0a2105a10879",                             │
+│           "example": false                                                          │
+│         },                                                                          │
+│         {                                                                           │
+│           "content": "No, I'm not doc agent. I'm a general-purpose AI assistant cre │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {                                                    │
+│             "id": "msg_018Z1qeRqhjLchEnVWkcdFkJ",                                   │
+│             "model": "claude-3-5-sonnet-20240620",                                  │
+│             "stop_reason": "end_turn",                                              │
+│             "stop_sequence": null,                                                  │
+│             "usage": {                                                              │
+│               "cache_creation_input_tokens": 0,                                     │
+│               "cache_read_input_tokens": 0,                                         │
+│               "input_tokens": 26,                                                   │
+│               "output_tokens": 61                                                   │
+│             },                                                                      │
+│             "model_name": "claude-3-5-sonnet-20240620"                              │
+│           },                                                                        │
+│           "type": "ai",                                                             │
+│           "name": null,                                                             │
+│           "id": "run-7738fd5b-2156-49dd-bcfe-4ac4fbfc25ae-0",                       │
+│           "example": false,                                                         │
+│           "tool_calls": [],                                                         │
+│           "invalid_tool_calls": [],                                                 │
+│           "usage_metadata": {                                                       │
+│             "input_tokens": 26,                                                     │
+│             "output_tokens": 61,                                                    │
+│             "total_tokens": 87,                                                     │
+│             "input_token_details": {                                                │
+│               "cache_read": 0,                                                      │
+│               "cache_creation": 0                                                   │
+│             }                                                                       │
+│           }                                                                         │
+│         }                                                                           │
+│       ],                                                                            │
+│       "loop_step": 1                                                                │
+│     },                                                                              │
+│     "next": [],                                                                     │
+│     "tasks": [],                                                                    │
+│     "metadata": {                                                                   │
+│       "step": 1,                                                                    │
+│       "run_id": "1f00f8b5-eac6-69d0-8534-26ffe01765eb",                             │
+│       "source": "loop",                                                             │
+│       "writes": {                                                                   │
+│         "chat_with_agent": {                                                        │
+│           "messages": [                                                             │
+│             {                                                                       │
+│               "id": "run-7738fd5b-2156-49dd-bcfe-4ac4fbfc25ae-0",                   │
+│               "name": null,                                                         │
+│               "type": "ai",                                                         │
+│               "content": "No, I'm not doc agent. I'm a general-purpose AI assistant │
+│               "example": false,                                                     │
+│               "tool_calls": [],                                                     │
+│               "usage_metadata": {                                                   │
+│                 "input_tokens": 26,                                                 │
+│                 "total_tokens": 87,                                                 │
+│                 "output_tokens": 61,                                                │
+│                 "input_token_details": {                                            │
+│                   "cache_read": 0,                                                  │
+│                   "cache_creation": 0                                               │
+│                 }                                                                   │
+│               },                                                                    │
+│               "additional_kwargs": {},                                              │
+│               "response_metadata": {                                                │
+│                 "id": "msg_018Z1qeRqhjLchEnVWkcdFkJ",                               │
+│                 "model": "claude-3-5-sonnet-20240620",                              │
+│                 "usage": {                                                          │
+│                   "input_tokens": 26,                                               │
+│                   "output_tokens": 61,                                              │
+│                   "cache_read_input_tokens": 0,                                     │
+│                   "cache_creation_input_tokens": 0                                  │
+│                 },                                                                  │
+│                 "model_name": "claude-3-5-sonnet-20240620",                         │
+│                 "stop_reason": "end_turn",                                          │
+│                 "stop_sequence": null                                               │
+│               },                                                                    │
+│               "invalid_tool_calls": []                                              │
+│             }                                                                       │
+│           ],                                                                        │
+│           "loop_step": 1                                                            │
+│         }                                                                           │
+│       },                                                                            │
+│       "parents": {},                                                                │
+│       "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                    │
+│       "graph_id": "generic_chat_agent",                                             │
+│       "x-scheme": "https",                                                          │
+│       "file_name": "username.csv",                                                  │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "x-real-ip": "10.0.0.74",                                                     │
+│       "created_by": "system",                                                       │
+│       "user-agent": "langgraph-sdk-py/0.1.60",                                      │
+│       "run_attempt": 1,                                                             │
+│       "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                       │
+│       "x-request-id": "ff5b49870a9372d46d311c3e6e08949b",                           │
+│       "langgraph_host": "saas",                                                     │
+│       "langgraph_plan": "enterprise",                                               │
+│       "x-forwarded-for": "10.0.0.74",                                               │
+│       "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us.la │
+│       "x-forwarded-port": "443",                                                    │
+│       "document_metadata": {                                                        │
+│         "columns": [                                                                │
+│           "Username",                                                               │
+│           " Identifier",                                                            │
+│           "First name",                                                             │
+│           "Last name"                                                               │
+│         ],                                                                          │
+│         "num_rows": 140,                                                            │
+│         "file_name": "username.csv",                                                │
+│         "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWUKY │
+│       },                                                                            │
+│       "langgraph_api_url": null,                                                    │
+│       "langgraph_version": "0.3.21",                                                │
+│       "x-forwarded-proto": "https",                                                 │
+│       "x-forwarded-scheme": "https",                                                │
+│       "langgraph_auth_user": null,                                                  │
+│       "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",             │
+│       "langgraph_auth_permissions": [                                               │
+│         "authenticated"                                                             │
+│       ]                                                                             │
+│     },                                                                              │
+│     "created_at": "2025-04-02T06:26:12.938117+00:00",                               │
+│     "checkpoint": {                                                                 │
+│       "checkpoint_id": "1f00f8b5-fba0-604a-8001-dc75602e2e36",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "parent_checkpoint": {                                                          │
+│       "checkpoint_id": "1f00f8b5-ec93-6eee-8000-68837589bb67",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "checkpoint_id": "1f00f8b5-fba0-604a-8001-dc75602e2e36",                        │
+│     "parent_checkpoint_id": "1f00f8b5-ec93-6eee-8000-68837589bb67"                  │
+│   },                                                                                │
+│   {                                                                                 │
+│     "values": {                                                                     │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "content": "Are you doc agent?",                                          │
+│           "additional_kwargs": {},                                                  │
+│           "response_metadata": {},                                                  │
+│           "type": "human",                                                          │
+│           "name": null,                                                             │
+│           "id": "2a7a21f7-6153-4456-890e-0a2105a10879",                             │
+│           "example": false                                                          │
+│         }                                                                           │
+│       ],                                                                            │
+│       "loop_step": 0                                                                │
+│     },                                                                              │
+│     "next": [                                                                       │
+│       "chat_with_agent"                                                             │
+│     ],                                                                              │
+│     "tasks": [                                                                      │
+│       {                                                                             │
+│         "id": "0be8add2-7d59-ce71-8ccd-9e4bb1915297",                               │
+│         "name": "chat_with_agent",                                                  │
+│         "path": [                                                                   │
+│           "__pregel_pull",                                                          │
+│           "chat_with_agent"                                                         │
+│         ],                                                                          │
+│         "error": null,                                                              │
+│         "interrupts": [],                                                           │
+│         "checkpoint": null,                                                         │
+│         "state": null,                                                              │
+│         "result": {                                                                 │
+│           "messages": [                                                             │
+│             {                                                                       │
+│               "content": "No, I'm not doc agent. I'm a general-purpose AI assistant │
+│               "additional_kwargs": {},                                              │
+│               "response_metadata": {                                                │
+│                 "id": "msg_018Z1qeRqhjLchEnVWkcdFkJ",                               │
+│                 "model": "claude-3-5-sonnet-20240620",                              │
+│                 "stop_reason": "end_turn",                                          │
+│                 "stop_sequence": null,                                              │
+│                 "usage": {                                                          │
+│                   "cache_creation_input_tokens": 0,                                 │
+│                   "cache_read_input_tokens": 0,                                     │
+│                   "input_tokens": 26,                                               │
+│                   "output_tokens": 61                                               │
+│                 },                                                                  │
+│                 "model_name": "claude-3-5-sonnet-20240620"                          │
+│               },                                                                    │
+│               "type": "ai",                                                         │
+│               "name": null,                                                         │
+│               "id": "run-7738fd5b-2156-49dd-bcfe-4ac4fbfc25ae-0",                   │
+│               "example": false,                                                     │
+│               "tool_calls": [],                                                     │
+│               "invalid_tool_calls": [],                                             │
+│               "usage_metadata": {                                                   │
+│                 "input_tokens": 26,                                                 │
+│                 "output_tokens": 61,                                                │
+│                 "total_tokens": 87,                                                 │
+│                 "input_token_details": {                                            │
+│                   "cache_read": 0,                                                  │
+│                   "cache_creation": 0                                               │
+│                 }                                                                   │
+│               }                                                                     │
+│             }                                                                       │
+│           ],                                                                        │
+│           "loop_step": 1                                                            │
+│         }                                                                           │
+│       }                                                                             │
+│     ],                                                                              │
+│     "metadata": {                                                                   │
+│       "step": 0,                                                                    │
+│       "run_id": "1f00f8b5-eac6-69d0-8534-26ffe01765eb",                             │
+│       "source": "loop",                                                             │
+│       "writes": null,                                                               │
+│       "parents": {},                                                                │
+│       "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                    │
+│       "graph_id": "generic_chat_agent",                                             │
+│       "x-scheme": "https",                                                          │
+│       "file_name": "username.csv",                                                  │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "x-real-ip": "10.0.0.74",                                                     │
+│       "created_by": "system",                                                       │
+│       "user-agent": "langgraph-sdk-py/0.1.60",                                      │
+│       "run_attempt": 1,                                                             │
+│       "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                       │
+│       "x-request-id": "ff5b49870a9372d46d311c3e6e08949b",                           │
+│       "langgraph_host": "saas",                                                     │
+│       "langgraph_plan": "enterprise",                                               │
+│       "x-forwarded-for": "10.0.0.74",                                               │
+│       "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us.la │
+│       "x-forwarded-port": "443",                                                    │
+│       "document_metadata": {                                                        │
+│         "columns": [                                                                │
+│           "Username",                                                               │
+│           " Identifier",                                                            │
+│           "First name",                                                             │
+│           "Last name"                                                               │
+│         ],                                                                          │
+│         "num_rows": 140,                                                            │
+│         "file_name": "username.csv",                                                │
+│         "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWUKY │
+│       },                                                                            │
+│       "langgraph_api_url": null,                                                    │
+│       "langgraph_version": "0.3.21",                                                │
+│       "x-forwarded-proto": "https",                                                 │
+│       "x-forwarded-scheme": "https",                                                │
+│       "langgraph_auth_user": null,                                                  │
+│       "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",             │
+│       "langgraph_auth_permissions": [                                               │
+│         "authenticated"                                                             │
+│       ]                                                                             │
+│     },                                                                              │
+│     "created_at": "2025-04-02T06:26:11.360298+00:00",                               │
+│     "checkpoint": {                                                                 │
+│       "checkpoint_id": "1f00f8b5-ec93-6eee-8000-68837589bb67",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "parent_checkpoint": {                                                          │
+│       "checkpoint_id": "1f00f8b5-ec71-6ab4-bfff-11f6788ee587",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "checkpoint_id": "1f00f8b5-ec93-6eee-8000-68837589bb67",                        │
+│     "parent_checkpoint_id": "1f00f8b5-ec71-6ab4-bfff-11f6788ee587"                  │
+│   },                                                                                │
+│   {                                                                                 │
+│     "values": {                                                                     │
+│       "messages": [],                                                               │
+│       "loop_step": 0                                                                │
+│     },                                                                              │
+│     "next": [                                                                       │
+│       "__start__"                                                                   │
+│     ],                                                                              │
+│     "tasks": [                                                                      │
+│       {                                                                             │
+│         "id": "fceabde0-9b3a-3a63-bd4f-72820556328e",                               │
+│         "name": "__start__",                                                        │
+│         "path": [                                                                   │
+│           "__pregel_pull",                                                          │
+│           "__start__"                                                               │
+│         ],                                                                          │
+│         "error": null,                                                              │
+│         "interrupts": [],                                                           │
+│         "checkpoint": null,                                                         │
+│         "state": null,                                                              │
+│         "result": {                                                                 │
+│           "messages": [                                                             │
+│             {                                                                       │
+│               "role": "user",                                                       │
+│               "content": "Are you doc agent?"                                       │
+│             }                                                                       │
+│           ]                                                                         │
+│         }                                                                           │
+│       }                                                                             │
+│     ],                                                                              │
+│     "metadata": {                                                                   │
+│       "step": -1,                                                                   │
+│       "run_id": "1f00f8b5-eac6-69d0-8534-26ffe01765eb",                             │
+│       "source": "input",                                                            │
+│       "writes": {                                                                   │
+│         "__start__": {                                                              │
+│           "messages": [                                                             │
+│             {                                                                       │
+│               "role": "user",                                                       │
+│               "content": "Are you doc agent?"                                       │
+│             }                                                                       │
+│           ],                                                                        │
+│           "configurable": {                                                         │
+│             "model": "openai/gpt-4o-mini"                                           │
+│           }                                                                         │
+│         }                                                                           │
+│       },                                                                            │
+│       "parents": {},                                                                │
+│       "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                    │
+│       "graph_id": "generic_chat_agent",                                             │
+│       "x-scheme": "https",                                                          │
+│       "file_name": "username.csv",                                                  │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "x-real-ip": "10.0.0.74",                                                     │
+│       "created_by": "system",                                                       │
+│       "user-agent": "langgraph-sdk-py/0.1.60",                                      │
+│       "run_attempt": 1,                                                             │
+│       "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                       │
+│       "x-request-id": "ff5b49870a9372d46d311c3e6e08949b",                           │
+│       "langgraph_host": "saas",                                                     │
+│       "langgraph_plan": "enterprise",                                               │
+│       "x-forwarded-for": "10.0.0.74",                                               │
+│       "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us.la │
+│       "x-forwarded-port": "443",                                                    │
+│       "document_metadata": {                                                        │
+│         "columns": [                                                                │
+│           "Username",                                                               │
+│           " Identifier",                                                            │
+│           "First name",                                                             │
+│           "Last name"                                                               │
+│         ],                                                                          │
+│         "num_rows": 140,                                                            │
+│         "file_name": "username.csv",                                                │
+│         "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWUKY │
+│       },                                                                            │
+│       "langgraph_api_url": null,                                                    │
+│       "langgraph_version": "0.3.21",                                                │
+│       "x-forwarded-proto": "https",                                                 │
+│       "x-forwarded-scheme": "https",                                                │
+│       "langgraph_auth_user": null,                                                  │
+│       "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",             │
+│       "langgraph_auth_permissions": [                                               │
+│         "authenticated"                                                             │
+│       ]                                                                             │
+│     },                                                                              │
+│     "created_at": "2025-04-02T06:26:11.346249+00:00",                               │
+│     "checkpoint": {                                                                 │
+│       "checkpoint_id": "1f00f8b5-ec71-6ab4-bfff-11f6788ee587",                      │
+│       "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                          │
+│       "checkpoint_ns": ""                                                           │
+│     },                                                                              │
+│     "parent_checkpoint": null,                                                      │
+│     "checkpoint_id": "1f00f8b5-ec71-6ab4-bfff-11f6788ee587",                        │
+│     "parent_checkpoint_id": null                                                    │
+│   }                                                                                 │
+│ ]                                                                                   │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
+
+🏃 Thread Runs
+╭───────────────────── Run 1f00f8cd-7375-6c5b-b832-7e033da81c92 ──────────────────────╮
+│ {                                                                                   │
+│   "run_id": "1f00f8cd-7375-6c5b-b832-7e033da81c92",                                 │
+│   "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                              │
+│   "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                           │
+│   "created_at": "2025-04-02T06:36:42.907580+00:00",                                 │
+│   "updated_at": "2025-04-02T06:36:43.995801+00:00",                                 │
+│   "metadata": {                                                                     │
+│     "from_studio": true,                                                            │
+│     "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                         │
+│     "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef0 │
+│   },                                                                                │
+│   "status": "success",                                                              │
+│   "kwargs": {                                                                       │
+│     "input": {                                                                      │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "type": "human",                                                          │
+│           "content": "One more hello "                                              │
+│         }                                                                           │
+│       ]                                                                             │
+│     },                                                                              │
+│     "config": {                                                                     │
+│       "metadata": {                                                                 │
+│         "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                  │
+│         "graph_id": "generic_chat_agent",                                           │
+│         "file_name": "username.csv",                                                │
+│         "created_by": "system",                                                     │
+│         "from_studio": true,                                                        │
+│         "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                     │
+│         "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f0242 │
+│         "document_metadata": {                                                      │
+│           "columns": [                                                              │
+│             "Username",                                                             │
+│             " Identifier",                                                          │
+│             "First name",                                                           │
+│             "Last name"                                                             │
+│           ],                                                                        │
+│           "num_rows": 140,                                                          │
+│           "file_name": "username.csv",                                              │
+│           "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWU │
+│         }                                                                           │
+│       },                                                                            │
+│       "configurable": {                                                             │
+│         "model": "openai/gpt-4o-mini",                                              │
+│         "prompt": "You're generic AI assistant.\n\nMessage history:\n{messages}\n\n │
+│         "run_id": "1f00f8cd-7375-6c5b-b832-7e033da81c92",                           │
+│         "user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",                          │
+│         "graph_id": "generic_chat_agent",                                           │
+│         "x-scheme": "https",                                                        │
+│         "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                        │
+│         "thread_ts": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                        │
+│         "x-real-ip": "88.8.42.162",                                                 │
+│         "x-user-id": "a9e4b727-54da-4b24-aae0-233464783bc9",                        │
+│         "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/ │
+│         "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                     │
+│         "x-request-id": "260e1cf4139244a2a86d02733c522ce4",                         │
+│         "checkpoint_id": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                    │
+│         "x-auth-scheme": "langsmith",                                               │
+│         "x-forwarded-for": "88.8.42.162",                                           │
+│         "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us. │
+│         "x-forwarded-port": "443",                                                  │
+│         "x-forwarded-proto": "https",                                               │
+│         "x-forwarded-scheme": "https",                                              │
+│         "langgraph_auth_user": null,                                                │
+│         "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",           │
+│         "langgraph_auth_permissions": [                                             │
+│           "authenticated"                                                           │
+│         ]                                                                           │
+│       }                                                                             │
+│     },                                                                              │
+│     "command": null,                                                                │
+│     "webhook": null,                                                                │
+│     "subgraphs": true,                                                              │
+│     "temporary": false,                                                             │
+│     "stream_mode": [                                                                │
+│       "debug",                                                                      │
+│       "messages"                                                                    │
+│     ],                                                                              │
+│     "feedback_keys": null,                                                          │
+│     "interrupt_after": [],                                                          │
+│     "interrupt_before": []                                                          │
+│   },                                                                                │
+│   "multitask_strategy": "rollback"                                                  │
+│ }                                                                                   │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────── Run Details 1f00f8cd-7375-6c5b-b832-7e033da81c92 ──────────────────╮
+│ {                                                                                   │
+│   "run_id": "1f00f8cd-7375-6c5b-b832-7e033da81c92",                                 │
+│   "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                              │
+│   "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                           │
+│   "created_at": "2025-04-02T06:36:42.907580+00:00",                                 │
+│   "updated_at": "2025-04-02T06:36:43.995801+00:00",                                 │
+│   "metadata": {                                                                     │
+│     "from_studio": true,                                                            │
+│     "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                         │
+│     "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef0 │
+│   },                                                                                │
+│   "status": "success",                                                              │
+│   "kwargs": {                                                                       │
+│     "input": {                                                                      │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "type": "human",                                                          │
+│           "content": "One more hello "                                              │
+│         }                                                                           │
+│       ]                                                                             │
+│     },                                                                              │
+│     "config": {                                                                     │
+│       "metadata": {                                                                 │
+│         "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                  │
+│         "graph_id": "generic_chat_agent",                                           │
+│         "file_name": "username.csv",                                                │
+│         "created_by": "system",                                                     │
+│         "from_studio": true,                                                        │
+│         "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                     │
+│         "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f0242 │
+│         "document_metadata": {                                                      │
+│           "columns": [                                                              │
+│             "Username",                                                             │
+│             " Identifier",                                                          │
+│             "First name",                                                           │
+│             "Last name"                                                             │
+│           ],                                                                        │
+│           "num_rows": 140,                                                          │
+│           "file_name": "username.csv",                                              │
+│           "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWU │
+│         }                                                                           │
+│       },                                                                            │
+│       "configurable": {                                                             │
+│         "model": "openai/gpt-4o-mini",                                              │
+│         "prompt": "You're generic AI assistant.\n\nMessage history:\n{messages}\n\n │
+│         "run_id": "1f00f8cd-7375-6c5b-b832-7e033da81c92",                           │
+│         "user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",                          │
+│         "graph_id": "generic_chat_agent",                                           │
+│         "x-scheme": "https",                                                        │
+│         "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                        │
+│         "thread_ts": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                        │
+│         "x-real-ip": "88.8.42.162",                                                 │
+│         "x-user-id": "a9e4b727-54da-4b24-aae0-233464783bc9",                        │
+│         "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/ │
+│         "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                     │
+│         "x-request-id": "260e1cf4139244a2a86d02733c522ce4",                         │
+│         "checkpoint_id": "1f00f8cc-ba99-6cf0-8004-d80f5db35b39",                    │
+│         "x-auth-scheme": "langsmith",                                               │
+│         "x-forwarded-for": "88.8.42.162",                                           │
+│         "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us. │
+│         "x-forwarded-port": "443",                                                  │
+│         "x-forwarded-proto": "https",                                               │
+│         "x-forwarded-scheme": "https",                                              │
+│         "langgraph_auth_user": null,                                                │
+│         "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",           │
+│         "langgraph_auth_permissions": [                                             │
+│           "authenticated"                                                           │
+│         ]                                                                           │
+│       }                                                                             │
+│     },                                                                              │
+│     "command": null,                                                                │
+│     "webhook": null,                                                                │
+│     "subgraphs": true,                                                              │
+│     "temporary": false,                                                             │
+│     "stream_mode": [                                                                │
+│       "debug",                                                                      │
+│       "messages"                                                                    │
+│     ],                                                                              │
+│     "feedback_keys": null,                                                          │
+│     "interrupt_after": [],                                                          │
+│     "interrupt_before": []                                                          │
+│   },                                                                                │
+│   "multitask_strategy": "rollback"                                                  │
+│ }                                                                                   │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────── Run 1f00f8cc-a770-6512-998c-1e4ed15f38d1 ──────────────────────╮
+│ {                                                                                   │
+│   "run_id": "1f00f8cc-a770-6512-998c-1e4ed15f38d1",                                 │
+│   "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                              │
+│   "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                           │
+│   "created_at": "2025-04-02T06:36:21.514468+00:00",                                 │
+│   "updated_at": "2025-04-02T06:36:23.530418+00:00",                                 │
+│   "metadata": {                                                                     │
+│     "from_studio": true,                                                            │
+│     "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                         │
+│     "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef0 │
+│   },                                                                                │
+│   "status": "success",                                                              │
+│   "kwargs": {                                                                       │
+│     "input": {                                                                      │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "type": "human",                                                          │
+│           "content": "Hello again"                                                  │
+│         }                                                                           │
+│       ]                                                                             │
+│     },                                                                              │
+│     "config": {                                                                     │
+│       "metadata": {                                                                 │
+│         "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                  │
+│         "graph_id": "generic_chat_agent",                                           │
+│         "file_name": "username.csv",                                                │
+│         "created_by": "system",                                                     │
+│         "from_studio": true,                                                        │
+│         "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                     │
+│         "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f0242 │
+│         "document_metadata": {                                                      │
+│           "columns": [                                                              │
+│             "Username",                                                             │
+│             " Identifier",                                                          │
+│             "First name",                                                           │
+│             "Last name"                                                             │
+│           ],                                                                        │
+│           "num_rows": 140,                                                          │
+│           "file_name": "username.csv",                                              │
+│           "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWU │
+│         }                                                                           │
+│       },                                                                            │
+│       "configurable": {                                                             │
+│         "model": "openai/gpt-4o-mini",                                              │
+│         "prompt": "You're generic AI assistant.\n\nMessage history:\n{messages}\n\n │
+│         "run_id": "1f00f8cc-a770-6512-998c-1e4ed15f38d1",                           │
+│         "user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",                          │
+│         "graph_id": "generic_chat_agent",                                           │
+│         "x-scheme": "https",                                                        │
+│         "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                        │
+│         "thread_ts": "1f00f8b5-fba0-604a-8001-dc75602e2e36",                        │
+│         "x-real-ip": "88.8.42.162",                                                 │
+│         "x-user-id": "a9e4b727-54da-4b24-aae0-233464783bc9",                        │
+│         "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/ │
+│         "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                     │
+│         "x-request-id": "e21b259469093d538e30161b458380c6",                         │
+│         "checkpoint_id": "1f00f8b5-fba0-604a-8001-dc75602e2e36",                    │
+│         "x-auth-scheme": "langsmith",                                               │
+│         "x-forwarded-for": "88.8.42.162",                                           │
+│         "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us. │
+│         "x-forwarded-port": "443",                                                  │
+│         "x-forwarded-proto": "https",                                               │
+│         "x-forwarded-scheme": "https",                                              │
+│         "langgraph_auth_user": null,                                                │
+│         "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",           │
+│         "langgraph_auth_permissions": [                                             │
+│           "authenticated"                                                           │
+│         ]                                                                           │
+│       }                                                                             │
+│     },                                                                              │
+│     "command": null,                                                                │
+│     "webhook": null,                                                                │
+│     "subgraphs": true,                                                              │
+│     "temporary": false,                                                             │
+│     "stream_mode": [                                                                │
+│       "debug",                                                                      │
+│       "messages"                                                                    │
+│     ],                                                                              │
+│     "feedback_keys": null,                                                          │
+│     "interrupt_after": [],                                                          │
+│     "interrupt_before": []                                                          │
+│   },                                                                                │
+│   "multitask_strategy": "rollback"                                                  │
+│ }                                                                                   │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────── Run Details 1f00f8cc-a770-6512-998c-1e4ed15f38d1 ──────────────────╮
+│ {                                                                                   │
+│   "run_id": "1f00f8cc-a770-6512-998c-1e4ed15f38d1",                                 │
+│   "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                              │
+│   "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                           │
+│   "created_at": "2025-04-02T06:36:21.514468+00:00",                                 │
+│   "updated_at": "2025-04-02T06:36:23.530418+00:00",                                 │
+│   "metadata": {                                                                     │
+│     "from_studio": true,                                                            │
+│     "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                         │
+│     "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef0 │
+│   },                                                                                │
+│   "status": "success",                                                              │
+│   "kwargs": {                                                                       │
+│     "input": {                                                                      │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "type": "human",                                                          │
+│           "content": "Hello again"                                                  │
+│         }                                                                           │
+│       ]                                                                             │
+│     },                                                                              │
+│     "config": {                                                                     │
+│       "metadata": {                                                                 │
+│         "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                  │
+│         "graph_id": "generic_chat_agent",                                           │
+│         "file_name": "username.csv",                                                │
+│         "created_by": "system",                                                     │
+│         "from_studio": true,                                                        │
+│         "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                     │
+│         "LANGGRAPH_API_URL": "https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f0242 │
+│         "document_metadata": {                                                      │
+│           "columns": [                                                              │
+│             "Username",                                                             │
+│             " Identifier",                                                          │
+│             "First name",                                                           │
+│             "Last name"                                                             │
+│           ],                                                                        │
+│           "num_rows": 140,                                                          │
+│           "file_name": "username.csv",                                              │
+│           "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWU │
+│         }                                                                           │
+│       },                                                                            │
+│       "configurable": {                                                             │
+│         "model": "openai/gpt-4o-mini",                                              │
+│         "prompt": "You're generic AI assistant.\n\nMessage history:\n{messages}\n\n │
+│         "run_id": "1f00f8cc-a770-6512-998c-1e4ed15f38d1",                           │
+│         "user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",                          │
+│         "graph_id": "generic_chat_agent",                                           │
+│         "x-scheme": "https",                                                        │
+│         "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                        │
+│         "thread_ts": "1f00f8b5-fba0-604a-8001-dc75602e2e36",                        │
+│         "x-real-ip": "88.8.42.162",                                                 │
+│         "x-user-id": "a9e4b727-54da-4b24-aae0-233464783bc9",                        │
+│         "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/ │
+│         "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                     │
+│         "x-request-id": "e21b259469093d538e30161b458380c6",                         │
+│         "checkpoint_id": "1f00f8b5-fba0-604a-8001-dc75602e2e36",                    │
+│         "x-auth-scheme": "langsmith",                                               │
+│         "x-forwarded-for": "88.8.42.162",                                           │
+│         "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us. │
+│         "x-forwarded-port": "443",                                                  │
+│         "x-forwarded-proto": "https",                                               │
+│         "x-forwarded-scheme": "https",                                              │
+│         "langgraph_auth_user": null,                                                │
+│         "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",           │
+│         "langgraph_auth_permissions": [                                             │
+│           "authenticated"                                                           │
+│         ]                                                                           │
+│       }                                                                             │
+│     },                                                                              │
+│     "command": null,                                                                │
+│     "webhook": null,                                                                │
+│     "subgraphs": true,                                                              │
+│     "temporary": false,                                                             │
+│     "stream_mode": [                                                                │
+│       "debug",                                                                      │
+│       "messages"                                                                    │
+│     ],                                                                              │
+│     "feedback_keys": null,                                                          │
+│     "interrupt_after": [],                                                          │
+│     "interrupt_before": []                                                          │
+│   },                                                                                │
+│   "multitask_strategy": "rollback"                                                  │
+│ }                                                                                   │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────── Run 1f00f8b5-eac6-69d0-8534-26ffe01765eb ──────────────────────╮
+│ {                                                                                   │
+│   "run_id": "1f00f8b5-eac6-69d0-8534-26ffe01765eb",                                 │
+│   "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                              │
+│   "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                           │
+│   "created_at": "2025-04-02T06:26:11.175344+00:00",                                 │
+│   "updated_at": "2025-04-02T06:26:12.947633+00:00",                                 │
+│   "metadata": {                                                                     │
+│     "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10"                          │
+│   },                                                                                │
+│   "status": "success",                                                              │
+│   "kwargs": {                                                                       │
+│     "input": {                                                                      │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "role": "user",                                                           │
+│           "content": "Are you doc agent?"                                           │
+│         }                                                                           │
+│       ],                                                                            │
+│       "configurable": {                                                             │
+│         "model": "openai/gpt-4o-mini"                                               │
+│       }                                                                             │
+│     },                                                                              │
+│     "config": {                                                                     │
+│       "metadata": {                                                                 │
+│         "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                  │
+│         "file_name": "username.csv",                                                │
+│         "created_by": "system",                                                     │
+│         "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                     │
+│         "document_metadata": {                                                      │
+│           "columns": [                                                              │
+│             "Username",                                                             │
+│             " Identifier",                                                          │
+│             "First name",                                                           │
+│             "Last name"                                                             │
+│           ],                                                                        │
+│           "num_rows": 140,                                                          │
+│           "file_name": "username.csv",                                              │
+│           "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWU │
+│         }                                                                           │
+│       },                                                                            │
+│       "configurable": {                                                             │
+│         "run_id": "1f00f8b5-eac6-69d0-8534-26ffe01765eb",                           │
+│         "user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",                          │
+│         "graph_id": "generic_chat_agent",                                           │
+│         "x-scheme": "https",                                                        │
+│         "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                        │
+│         "x-real-ip": "10.0.0.74",                                                   │
+│         "user-agent": "langgraph-sdk-py/0.1.60",                                    │
+│         "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                     │
+│         "x-request-id": "ff5b49870a9372d46d311c3e6e08949b",                         │
+│         "x-forwarded-for": "10.0.0.74",                                             │
+│         "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us. │
+│         "x-forwarded-port": "443",                                                  │
+│         "x-forwarded-proto": "https",                                               │
+│         "x-forwarded-scheme": "https",                                              │
+│         "langgraph_auth_user": null,                                                │
+│         "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",           │
+│         "langgraph_auth_permissions": [                                             │
+│           "authenticated"                                                           │
+│         ]                                                                           │
+│       }                                                                             │
+│     },                                                                              │
+│     "command": null,                                                                │
+│     "webhook": null,                                                                │
+│     "subgraphs": false,                                                             │
+│     "temporary": false,                                                             │
+│     "stream_mode": [                                                                │
+│       "values"                                                                      │
+│     ],                                                                              │
+│     "feedback_keys": null,                                                          │
+│     "interrupt_after": null,                                                        │
+│     "interrupt_before": null                                                        │
+│   },                                                                                │
+│   "multitask_strategy": "reject"                                                    │
+│ }                                                                                   │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
+╭───────────────── Run Details 1f00f8b5-eac6-69d0-8534-26ffe01765eb ──────────────────╮
+│ {                                                                                   │
+│   "run_id": "1f00f8b5-eac6-69d0-8534-26ffe01765eb",                                 │
+│   "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                              │
+│   "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                           │
+│   "created_at": "2025-04-02T06:26:11.175344+00:00",                                 │
+│   "updated_at": "2025-04-02T06:26:12.947633+00:00",                                 │
+│   "metadata": {                                                                     │
+│     "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10"                          │
+│   },                                                                                │
+│   "status": "success",                                                              │
+│   "kwargs": {                                                                       │
+│     "input": {                                                                      │
+│       "messages": [                                                                 │
+│         {                                                                           │
+│           "role": "user",                                                           │
+│           "content": "Are you doc agent?"                                           │
+│         }                                                                           │
+│       ],                                                                            │
+│       "configurable": {                                                             │
+│         "model": "openai/gpt-4o-mini"                                               │
+│       }                                                                             │
+│     },                                                                              │
+│     "config": {                                                                     │
+│       "metadata": {                                                                 │
+│         "user_id": "6pyAdizbP8TvCkChufu03SlIk4D2",                                  │
+│         "file_name": "username.csv",                                                │
+│         "created_by": "system",                                                     │
+│         "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                     │
+│         "document_metadata": {                                                      │
+│           "columns": [                                                              │
+│             "Username",                                                             │
+│             " Identifier",                                                          │
+│             "First name",                                                           │
+│             "Last name"                                                             │
+│           ],                                                                        │
+│           "num_rows": 140,                                                          │
+│           "file_name": "username.csv",                                              │
+│           "serialized_df": "VXNlcm5hbWUsIElkZW50aWZpZXIsRmlyc3QgbmFtZSxMYXN0IG5hbWU │
+│         }                                                                           │
+│       },                                                                            │
+│       "configurable": {                                                             │
+│         "run_id": "1f00f8b5-eac6-69d0-8534-26ffe01765eb",                           │
+│         "user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",                          │
+│         "graph_id": "generic_chat_agent",                                           │
+│         "x-scheme": "https",                                                        │
+│         "thread_id": "a268a448-f492-4c52-a57a-1353f88ab22e",                        │
+│         "x-real-ip": "10.0.0.74",                                                   │
+│         "user-agent": "langgraph-sdk-py/0.1.60",                                    │
+│         "assistant_id": "73ee7d98-0e63-5e1d-8aba-4bfd8289bd10",                     │
+│         "x-request-id": "ff5b49870a9372d46d311c3e6e08949b",                         │
+│         "x-forwarded-for": "10.0.0.74",                                             │
+│         "x-forwarded-host": "awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us. │
+│         "x-forwarded-port": "443",                                                  │
+│         "x-forwarded-proto": "https",                                               │
+│         "x-forwarded-scheme": "https",                                              │
+│         "langgraph_auth_user": null,                                                │
+│         "langgraph_auth_user_id": "a9e4b727-54da-4b24-aae0-233464783bc9",           │
+│         "langgraph_auth_permissions": [                                             │
+│           "authenticated"                                                           │
+│         ]                                                                           │
+│       }                                                                             │
+│     },                                                                              │
+│     "command": null,                                                                │
+│     "webhook": null,                                                                │
+│     "subgraphs": false,                                                             │
+│     "temporary": false,                                                             │
+│     "stream_mode": [                                                                │
+│       "values"                                                                      │
+│     ],                                                                              │
+│     "feedback_keys": null,                                                          │
+│     "interrupt_after": null,                                                        │
+│     "interrupt_before": null                                                        │
+│   },                                                                                │
+│   "multitask_strategy": "reject"                                                    │
+│ }                                                                                   │
+╰─────────────────────────────────────────────────────────────────────────────────────╯
