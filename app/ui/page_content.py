@@ -55,6 +55,7 @@ def render_page_content(
         else:
             render_document_content(user_info)
 
+
 def clear_file_state():
     st.session_state.uploaded_file = None
     st.session_state.document_metadata = None
@@ -129,7 +130,6 @@ def render_file_upload():
 
 def render_file_preview(user_info: FirebaseUserDict):
     """Render the content for the uploaded file."""
-    print(f"document_metadata: {st.session_state.document_metadata}")
     if st.session_state.document_metadata is not None:
         metadata = cast(DocumentMetadata, st.session_state.document_metadata)
         # Display data info
@@ -138,11 +138,10 @@ def render_file_preview(user_info: FirebaseUserDict):
 
         # Display the data
         st.dataframe(metadata.df.head(n=5), use_container_width=True)
-        if st.button("Clean data"):
+        if st.button("Procced with document analysis"):
             doc_service = DocAgent(user_id=user_info.get("localId"))
-            thread, stream = doc_service.new_clean_data_run(metadata)
+            thread = doc_service.new_thread(metadata)
             st.session_state.thread_id = thread.get("thread_id")
-            st.session_state.stream = stream
             st.rerun()
 
 

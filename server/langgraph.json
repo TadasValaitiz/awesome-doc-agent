@@ -1,9 +1,17 @@
 {
-  "dependencies": ["."],
+  "dependencies": [
+    "."
+  ],
   "graphs": {
     "enrichment_agent": "./src/enrichment_agent/graph.py:graph",
     "generic_chat_agent": "./src/generic_chat_agent/graph.py:graph",
     "doc_agent": "./src/doc_agent/graph.py:graph"
   },
-  "env": ".env"
+  "env": ".env",
+  "store": {
+    "index": {
+      "dims": 1536,
+      "embed": "openai:text-embedding-3-small"
+    }
+  }
 }

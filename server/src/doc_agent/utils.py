@@ -6,7 +6,9 @@ from langchain.chat_models import init_chat_model
 from langchain_core.language_models import BaseChatModel
 from langchain_core.messages import AnyMessage
 from langchain_core.runnables import RunnableConfig
-from pandas import DataFrame
+import io
+import base64
+import pandas as pd
 
 from enrichment_agent.configuration import Configuration
 
@@ -35,12 +37,12 @@ def init_model(config: Optional[RunnableConfig] = None) -> BaseChatModel:
     return init_chat_model(model, model_provider=provider)
 
 
-def pandas_to_markdown(df: DataFrame) -> str:
+def pandas_to_markdown(df: pd.DataFrame) -> str:
     """Convert a pandas DataFrame to a markdown table."""
     return df.to_markdown()
 
 
-def panda_sample() -> DataFrame:
+def panda_sample() -> pd.DataFrame:
     """Create a sample DataFrame with data inconsistencies for testing cleanup agents.
 
     Returns:
@@ -150,3 +152,14 @@ def panda_sample() -> DataFrame:
     )
 
     return df
+
+
+def serialize_dataframe(df: pd.DataFrame):
+    buffer = io.BytesIO()
+    df.to_parquet(buffer, compression="gzip")
+    return base64.b64encode(buffer.getvalue()).decode()
+
+
+def deserialize_dataframe(serialized: str):
+    buffer = io.BytesIO(base64.b64decode(serialized))
+    return pd.read_parquet(buffer)

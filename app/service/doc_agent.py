@@ -1,12 +1,15 @@
 import os
-from typing import Optional, Iterator
-from langgraph_sdk import get_sync_client
+from typing import Any, AsyncIterator, Dict, Literal, Optional, Iterator, cast
+from langgraph_sdk import get_sync_client, get_client
 from langgraph_sdk.schema import StreamPart, Thread
-from common.types import DocumentMetadata
+from langchain_core.messages import HumanMessage, SystemMessage
+from common.types import DocumentMetadata, State, serialize_dataframe
+from service.constants import URL
+import streamlit as st
 
 
 class DocAgent:
-    graph_id = "generic_chat_agent"
+    graph_id = "doc_agent"
 
     def __init__(
         self,
@@ -17,11 +20,12 @@ class DocAgent:
         self.user_id = user_id
         self.model = model
         self.thread_id = thread_id
-        api_key = os.getenv("LANGSMITH_API_KEY")
-        if not api_key:
-            raise ValueError("LANGSMITH_API_KEY is not set")
+        if "langchain" in st.secrets:
+            api_key = st.secrets["langchain"]["api_key"]
+        else:
+            raise ValueError("langchain api_key is not set in Streamlit secrets")
         self.client = get_sync_client(
-            url="https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us.langgraph.app",
+            url=URL,
             api_key=api_key,
         )
 
@@ -41,67 +45,90 @@ class DocAgent:
         """
         return cls(user_id=user_id, model=model, thread_id=thread_id)
 
-    def run_action(self, action: str) -> Iterator[StreamPart]:
-        """Run an action on the existing thread with streaming.
-
-        Args:
-            action: The action to run (typically a user message)
-
-        Returns:
-            Iterator of StreamPart containing chunks of the response
-        """
+    def run_action(
+        self,
+        user_intent: Literal[
+            "analyze_all",
+            "fix_duplicates",
+            "fix_missing_values",
+            "fix_outliers",
+            "fix_inconsistencies",
+            "chat",
+        ],
+        message: str = "",
+    ) -> Iterator[StreamPart]:
         if self.thread_id is None:
             raise ValueError(
                 "No thread_id available. Use from_thread() or new_clean_data_run() first."
             )
 
-        return self.client.runs.stream(
+        if user_intent == "chat":
+            input = {
+                "messages": [HumanMessage(content=message)],
+                "user_intent": user_intent,
+                "current_node": "__start__",
+            }
+        else:
+            input = {
+                "messages": [SystemMessage(content=user_intent)],
+                "user_intent": user_intent,
+                "current_node": "__start__",
+            }
+
+        iterator = self.client.runs.stream(
             thread_id=self.thread_id,
             assistant_id=self.graph_id,
-            input={
-                "messages": [{"role": "user", "content": action}],
-            },
-            stream_mode=["values", "debug"],  # Get both values and debug info in stream
+            input=input,
+            stream_mode=["values", "messages", "updates"],
             config={"configurable": {"model": self.model}},
         )
+        return iterator
 
-    def new_clean_data_run(
-        self, metadata: DocumentMetadata
-    ) -> tuple[Thread, Iterator[StreamPart]]:
-        """Create a new thread and start initial streaming run.
+    def get_history(self):
+        if self.thread_id is None:
+            raise ValueError(
+                "No thread_id available. Use from_thread() or new_clean_data_run() first."
+            )
+        history = self.client.threads.get_history(thread_id=self.thread_id, limit=100)
+        return list(reversed(history))
 
-        Args:
-            metadata: Document metadata to associate with the thread
+    def get_state(self):
+        if self.thread_id is None:
+            raise ValueError("No thread_id available")
+        threadState = self.client.threads.get_state(thread_id=self.thread_id)
+        values = cast(dict[str, Any], threadState.get("values", {}))
+        state = State(**values)
+        return state, threadState
 
-        Returns:
-            Tuple of (thread info, stream iterator)
-        """
-        # Create metadata dictionary using DocumentMetadata's serialization
+    def get_thread_document(self) -> DocumentMetadata:
+        if self.thread_id is None:
+            raise ValueError("No thread_id available")
+        item = self.client.store.get_item(
+            ["documents"],
+            key=self.thread_id,
+        )
+        return DocumentMetadata.from_dict(item.get("value"))
+
+    def new_thread(self, metadata: DocumentMetadata) -> Thread:
+
         thread_metadata = {
             "user_id": self.user_id,
             "file_name": metadata.file_name,
-            "document_metadata": metadata.to_dict(),
         }
 
-        # Create a new thread with metadata
         thread = self.client.threads.create(
             metadata=thread_metadata,
             graph_id=self.graph_id,
         )
         self.thread_id = thread["thread_id"]
 
-        # Start streaming run
-        stream = self.client.runs.stream(
-            thread_id=self.thread_id,
-            assistant_id=self.graph_id,
-            input={
-                "messages": [{"role": "user", "content": "Are you doc agent?"}],
-            },
-            stream_mode=["values", "debug"],
-            config={"configurable": {"model": self.model}},
+        self.client.store.put_item(
+            ["documents"],
+            key=self.thread_id,
+            value=metadata.to_dict(),
         )
 
-        return thread, stream
+        return thread
 
     def _get_doc_assistant(self):
         assistants = self.client.assistants.search(graph_id=self.graph_id)
