@@ -35,7 +35,7 @@ https://awesome-doc-agent-4aea3ef58f0f58c9b577c1f02420ef02.us.langgraph.app
 
 The user interface is deployed on Streamlit Cloud at:
 ```
-bbb.streamlit.com
+https://awesome-doc-agent.streamlit.app/
 ```
 
 ## Local Development
