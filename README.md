@@ -66,10 +66,7 @@ streamlit run app.py
 
 ## Available Agents
 
-This system includes several specialized agents:
 - Document Analysis Agent
-- Enrichment Agent
-- Generic Chat Agent
 
 ## Authentication
 

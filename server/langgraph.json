@@ -5,11 +5,5 @@
   "graphs": {
     "doc_agent": "./src/doc_agent/graph.py:graph"
   },
-  "env": ".env",
-  "store": {
-    "index": {
-      "dims": 1536,
-      "embed": "openai:text-embedding-3-small"
-    }
-  }
+  "env": ".env"
 }
