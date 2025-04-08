@@ -95,7 +95,9 @@ def render_actions(user_info: FirebaseUserDict):
             thread_id=st.session_state.thread_id, user_id=user_info.get("localId")
         )
         state, threadState = doc_agent.get_state()
-        render_state_actions(doc_agent, state)
+        with st.container():
+            render_state_actions(doc_agent, state)
+
         if user_message := st.chat_input("Type your message here..."):
             stream = doc_agent.run_action(user_intent="chat", message=user_message)
             render_stream(stream, doc_agent)
@@ -218,12 +220,6 @@ def render_stream(stream: Iterator[StreamPart], doc_agent: DocAgent):
                 state = State(**data)
                 next_node = state.next_node
 
-                print(
-                    f"\n===========\n{state.current_node}:{state.next_node}\n===========\n"
-                )
-                print(state)
-                print("\n===========")
-
                 if next_node == "__end__" and (
                     state.current_node == "summarize_fixes"
                     or state.current_node == "summarize_analysis"
@@ -240,9 +236,27 @@ def render_stream(stream: Iterator[StreamPart], doc_agent: DocAgent):
                     )
                     render_state_actions(doc_agent, state)
 
+                    time.sleep(0.5)
+                    st.rerun()
+
             elif part.event == "updates":
                 data = part.data
                 update = StateUpdates.from_update(data)
+                if (
+                    update.current_node == "fix_missing_values"
+                    or update.current_node == "fix_outliers"
+                    or update.current_node == "fix_duplicates"
+                    or update.current_node == "fix_inconsistencies"
+                    or update.current_node == "analyze_missing_values"
+                    or update.current_node == "analyze_outliers"
+                    or update.current_node == "analyze_duplicates"
+                    or update.current_node == "analyze_inconsistencies"
+                ):
+                    render_data_frame_from_update(
+                        doc_agent.get_thread_document().df,
+                        update,
+                        show_only_affected=True,
+                    )
 
             elif part.event == "messages/metadata":
                 data = part.data
