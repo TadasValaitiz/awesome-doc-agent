@@ -6,7 +6,8 @@ data model used internally by the graph.
 
 from dataclasses import field
 import operator
-from typing import Annotated, Any, Dict, List, Literal, Optional, Callable, TypedDict
+from typing import Annotated, Any, Dict, List, Literal, Optional, Callable
+from typing_extensions import TypedDict
 
 from langchain_core.messages import BaseMessage
 from langgraph.graph import add_messages
