@@ -10,7 +10,7 @@ import io
 import base64
 import pandas as pd
 
-from enrichment_agent.configuration import Configuration
+from doc_agent.configuration import Configuration
 
 
 def get_message_text(msg: AnyMessage) -> str:
