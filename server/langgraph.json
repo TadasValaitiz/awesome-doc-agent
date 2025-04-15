@@ -3,7 +3,11 @@
     "."
   ],
   "graphs": {
-    "doc_agent": "./src/doc_agent/graph.py:graph"
+    "doc_agent": "./src/doc_agent/graph.py:graph",
+    "react_agent": "./src/react_agent/graph.py:graph"
   },
-  "env": ".env"
+  "env": ".env",
+  "auth": {
+    "path": "src/security/auth.py:auth"
+  }
 }
