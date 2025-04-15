@@ -4,9 +4,16 @@ Works with a chat model with tool calling support.
 """
 
 from datetime import datetime, timezone
+import functools
 from typing import Dict, List, Literal, cast
 
-from langchain_core.messages import AIMessage
+from langchain_core.messages import (
+    AIMessage,
+    BaseMessage,
+    HumanMessage,
+    ToolMessage,
+    BaseMessageChunk,
+)
 from langchain_core.runnables import RunnableConfig
 from langgraph.graph import StateGraph
 from langgraph.prebuilt import ToolNode
@@ -15,13 +22,13 @@ from react_agent.configuration import Configuration
 from react_agent.state import InputState, State
 from react_agent.tools import TOOLS
 from react_agent.utils import load_chat_model
+from langgraph.types import Command, interrupt
+from langgraph.graph import StateGraph, START, END
 
 # Define the function that calls the model
 
 
-async def call_model(
-    state: State, config: RunnableConfig
-) -> Dict[str, List[AIMessage]]:
+async def call_model(state: State, config: RunnableConfig):
     """Call the LLM powering our "agent".
 
     This function prepares the prompt, initializes the model, and processes the response.
@@ -43,27 +50,45 @@ async def call_model(
         system_time=datetime.now(tz=timezone.utc).isoformat()
     )
 
-    # Get the model's response
-    response = cast(
-        AIMessage,
-        await model.ainvoke(
-            [{"role": "system", "content": system_message}, *state.messages], config
-        ),
+    chunks = []
+    async for chunk in model.astream(
+        [{"role": "system", "content": system_message}, *state.messages], config
+    ):
+        chunks.append(chunk)
+        yield Command(update={"messages": [chunk]})
+
+    final_message = functools.reduce(
+        lambda acc, chunk: acc.__add__(chunk),
+        chunks,
+        BaseMessageChunk(content="", type=""),
     )
 
     # Handle the case when it's the last step and the model still wants to use a tool
-    if state.is_last_step and response.tool_calls:
-        return {
-            "messages": [
-                AIMessage(
-                    id=response.id,
-                    content="Sorry, I could not find an answer to your question in the specified number of steps.",
-                )
-            ]
-        }
-
-    # Return the model's response as a list to be added to existing messages
-    return {"messages": [response]}
+    if (
+        state.is_last_step
+        and final_message.additional_kwargs.get("tool_calls") is not None
+    ):
+        yield Command(
+            update={
+                "messages": [
+                    AIMessage(
+                        id=final_message.id,
+                        content="Sorry, I could not find an answer to your question in the specified number of steps.",
+                    )
+                ]
+            }
+        )
+    else:
+        yield Command(
+            update={
+                "messages": [
+                    AIMessage(
+                        id=final_message.id,
+                        content=final_message.content,
+                    )
+                ]
+            }
+        )
 
 
 # Define a new graph
@@ -76,7 +101,7 @@ builder.add_node("tools", ToolNode(TOOLS))
 
 # Set the entrypoint as `call_model`
 # This means that this node is the first one called
-builder.add_edge("__start__", "call_model")
+builder.add_edge(START, "call_model")
 
 
 def route_model_output(state: State) -> Literal["__end__", "tools"]:
