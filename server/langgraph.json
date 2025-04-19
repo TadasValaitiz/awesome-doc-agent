@@ -4,7 +4,8 @@
   ],
   "graphs": {
     "doc_agent": "./src/doc_agent/graph.py:graph",
-    "react_agent": "./src/react_agent/graph.py:graph"
+    "react_agent": "./src/react_agent/graph.py:graph",
+    "strategy_agent": "./src/strategy_agent/graph.py:graph"
   },
   "env": ".env",
   "auth": {

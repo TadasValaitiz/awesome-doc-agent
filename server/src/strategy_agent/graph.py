@@ -67,12 +67,15 @@ class StrategyAssistantNode:
             [{"role": "system", "content": system_message}, *state.messages], config
         ):
             chunks.append(chunk)
+            print("=======CHUNK=====\n")
+            print(chunk)
+            print("============\n")
             yield Command(update={"messages": [chunk]})
 
         final_message = functools.reduce(
             lambda acc, chunk: acc.__add__(chunk),
-            chunks,
-            BaseMessageChunk(content="", type=""),
+            chunks[1:],
+            chunks[0],
         )
 
         # Handle the case when it's the last step and the model still wants to use a tool
@@ -97,6 +100,7 @@ class StrategyAssistantNode:
                         AIMessage(
                             id=final_message.id,
                             content=final_message.content,
+                            additional_kwargs=final_message.additional_kwargs,
                         )
                     ]
                 }
@@ -114,18 +118,20 @@ def route_model_output(state: State) -> Literal["__end__", "tools"]:
     Returns:
         str: The name of the next node to call ("__end__" or "tools").
     """
+
     last_message = state.messages[-1]
     if not isinstance(last_message, AIMessage):
         raise ValueError(
             f"Expected AIMessage in output edges, but got {type(last_message).__name__}"
         )
-    # If there is no tool call, then we finish
+
     if not last_message.tool_calls:
         return "__end__"
     # Otherwise we execute the requested actions
     return "tools"
 
-create_strategy_node = StrategyAssistantNode("strategy_assistant")
+
+strategy_assistant = StrategyAssistantNode("strategy_assistant")
 
 builder = StateGraph(
     state_schema=State,
@@ -133,7 +139,7 @@ builder = StateGraph(
     config_schema=Configuration,
 )
 
-builder.add_node(create_strategy_node)
+builder.add_node("strategy_assistant", strategy_assistant)
 builder.add_node("tools", ToolNode(TOOLS))
 
 
@@ -144,8 +150,6 @@ builder.add_conditional_edges(
     # based on the output from route_model_output
     route_model_output,
 )
-graph = builder.compile(
-    interrupt_before=[],
-    interrupt_after=[],
-)
-graph.name = "StrategyAgent"
+builder.add_edge("tools", "strategy_assistant")
+
+graph = builder.compile(interrupt_before=[], interrupt_after=[], name="StrategyAgent")
