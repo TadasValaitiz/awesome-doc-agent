@@ -141,15 +141,12 @@ builder = StateGraph(
 
 builder.add_node("strategy_assistant", strategy_assistant)
 builder.add_node("tools", ToolNode(TOOLS))
-
-
 builder.add_edge(START, "strategy_assistant")
 builder.add_conditional_edges(
     "strategy_assistant",
-    # After call_model finishes running, the next node(s) are scheduled
-    # based on the output from route_model_output
     route_model_output,
 )
 builder.add_edge("tools", "strategy_assistant")
+
 
 graph = builder.compile(interrupt_before=[], interrupt_after=[], name="StrategyAgent")

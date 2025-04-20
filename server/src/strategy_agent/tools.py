@@ -6,6 +6,7 @@ These tools are intended as free examples to get started. For production use,
 consider implementing more robust and specialized tools tailored to your needs.
 """
 
+from functools import partial
 from typing import Any, Callable, List, Optional, cast
 
 from langchain_community.tools.tavily_search import TavilySearchResults
@@ -21,7 +22,9 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 
 from strategy_agent import prompts
-from strategy_agent.utils import init_model
+from strategy_agent.utils import init_model, reciprocal_rank_fusion, take_top_k
+from strategy_agent.vector_db import AsyncVectorDB, VectorDB
+from strategy_agent.database import StrategyDb, TradingStrategyDefinition
 
 
 async def search(
@@ -55,7 +58,28 @@ async def search_trading_ideas(
     def prepare_prompt(question: str):
         return {"question": question, "context": ""}
 
-    rag_fusion_chain = prepare_prompt | rag_fusion_prompt | llm | StrOutputParser()
+    vector_db = AsyncVectorDB()
+
+    def load_strategies(ids: List[int]) -> List[str]:
+        strategy_db = StrategyDb()
+        return list(
+            map(
+                lambda x: cast(TradingStrategyDefinition, x["strategy"]).context_str(),
+                strategy_db.list_strategies_by_ids(ids),
+            )
+        )
+
+    rag_fusion_chain = (
+        prepare_prompt
+        | rag_fusion_prompt
+        | llm
+        | StrOutputParser()
+        | (lambda x: x.split("\n"))
+        | (await vector_db.strategy_retriever()).map()
+        | reciprocal_rank_fusion
+        | partial(take_top_k, k=5)
+        | load_strategies
+    )
 
     # rag_fusion_chain = prepare_prompt
     #         | rag_fusion_prompt
