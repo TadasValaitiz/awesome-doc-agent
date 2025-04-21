@@ -14,18 +14,34 @@ from strategy_agent import prompts
 class Configuration:
     """The configuration for the agent."""
 
-    system_prompt: str = field(
-        default=prompts.system_prompt,
+    chat_system_prompt: str = field(
+        default=prompts.chat_system_prompt,
         metadata={
             "description": "The system prompt to use for the agent's interactions. "
             "This prompt sets the context and behavior for the agent."
         },
     )
+    
+    code_system_prompt: str = field(
+        default=prompts.code_system_prompt,
+        metadata={
+            "description": "The system prompt to use for the agent's code interactions. "
+            "This prompt sets the context and behavior for the agent."
+        },
+    )
 
-    model: Annotated[str, {"__template_metadata__": {"kind": "llm"}}] = field(
+    chat_model: Annotated[str, {"__template_metadata__": {"kind": "llm"}}] = field(
         default="openai/gpt-4o-mini",
         metadata={
             "description": "The name of the language model to use for the agent's main interactions. "
+            "Should be in the form: provider/model-name."
+        },
+    )
+    
+    code_model: Annotated[str, {"__template_metadata__": {"kind": "llm"}}] = field(
+        default="openai/gpt-4o-mini",
+        metadata={
+            "description": "The name of the language model to use for the agent's code interactions. "
             "Should be in the form: provider/model-name."
         },
     )

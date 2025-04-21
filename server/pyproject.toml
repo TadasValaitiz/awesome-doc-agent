@@ -23,6 +23,10 @@ dependencies = [
     "pyarrow>=14.0.1",
     "langchain_chroma>=0.2.3",
     "openevals>=0.0.18",
+    "beautifulsoup4>=4.13.3",
+    "openevals[e2b-code-interpreter]==0.0.18",
+    "backtesting==0.6.1",
+    "ta==0.11.0",
 ]
 
 [project.optional-dependencies]

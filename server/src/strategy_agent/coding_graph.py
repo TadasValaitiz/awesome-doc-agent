@@ -1,7 +1,11 @@
-"""Define a custom Reasoning and Action agent.
+from typing import Optional
 
-Works with a chat model with tool calling support.
-"""
+from e2b_code_interpreter import Sandbox
+
+from strategy_agent.state import StrategyAgentState
+
+from langchain_core.runnables import RunnableConfig
+from langchain.chat_models import init_chat_model
 
 from datetime import datetime, timezone
 import functools
@@ -30,7 +34,7 @@ from strategy_agent.tools import TOOLS
 from strategy_agent.utils import init_model
 
 
-class StrategyAssistantNode:
+class StrategyCodeNode:
     """Abstract base class for analysis nodes that follow a common pattern."""
 
     def __init__(self, node_name: str):
@@ -40,7 +44,7 @@ class StrategyAssistantNode:
         """Execute the analysis node with the common pattern."""
         configuration = Configuration.from_runnable_config(config)
 
-        model = init_model(config).bind_tools(TOOLS)
+        model = init_model(config)
 
         # Format the system prompt. Customize this to change the agent's behavior.
         system_message = configuration.chat_system_prompt.format(
@@ -114,7 +118,7 @@ def route_model_output(state: StrategyAgentState) -> Literal["__end__", "tools"]
 
 
 def create_strategy_planner():
-    strategy_assistant = StrategyAssistantNode("strategy_assistant")
+    strategy_assistant = StrategyCodeNode("strategy_assistant")
 
     builder = StateGraph(
         state_schema=StrategyAgentState,
@@ -133,4 +137,35 @@ def create_strategy_planner():
 
     return builder.compile(
         interrupt_before=[], interrupt_after=[], name="StrategyPlannerAgent"
+    )
+
+
+
+_GLOBAL_SANDBOX = None
+
+def get_or_create_sandbox():
+    global _GLOBAL_SANDBOX
+    if _GLOBAL_SANDBOX is None:
+        _GLOBAL_SANDBOX = Sandbox("OpenEvalsPython")
+    return _GLOBAL_SANDBOX
+
+
+def create_reflection_agent(
+    config: RunnableConfig,
+):
+    configurable = config.get("configurable", {})
+    sandbox = configurable.get("sandbox", None)
+    model = configurable.get("model", None)
+    if sandbox is None:
+        sandbox = get_or_create_sandbox()
+    if model is None:
+        model = init_chat_model(
+            model="anthropic:claude-3-5-haiku-latest",
+            max_tokens=4096,
+        )
+    judge = create_code_judge_graph(sandbox)
+    return (
+        create_reflection_graph(create_base_agent(model), judge, MessagesState)
+        .compile()
+        .with_config(run_name="Mini Chat LangChain")
     )
