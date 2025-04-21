@@ -26,20 +26,18 @@ from langgraph.types import Command, interrupt
 
 from strategy_agent.strategy_planner_graph import create_strategy_planner
 from strategy_agent.configuration import Configuration
-from strategy_agent.state import InputState, State
+from strategy_agent.state import InputState, StrategyAgentState
 from strategy_agent.tools import TOOLS
 from strategy_agent.utils import init_model
+from strategy_agent.reflection_graph import create_reflection_graph
+from strategy_agent.trading_strategy_judge import trading_strategy_judge_graph
 
 
-builder = StateGraph(
-    state_schema=State,
-    input=InputState,
+graph = create_reflection_graph(
+    create_strategy_planner(),
+    trading_strategy_judge_graph,
+    state_schema=StrategyAgentState,
     config_schema=Configuration,
 )
 
-builder.add_node("strategy_planner", create_strategy_planner())
-
-builder.add_edge(START, "strategy_planner")
-builder.add_edge("strategy_planner", END)
-
-graph = builder.compile(interrupt_before=[], interrupt_after=[], name="StrategyAgent")
+graph.compile(name="StrategyAgent")

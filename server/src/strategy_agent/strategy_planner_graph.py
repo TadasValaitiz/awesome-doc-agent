@@ -25,7 +25,7 @@ from langgraph.prebuilt import ToolNode
 from langgraph.types import Command, interrupt
 
 from strategy_agent.configuration import Configuration
-from strategy_agent.state import InputState, State
+from strategy_agent.state import InputState, StrategyAgentState
 from strategy_agent.tools import TOOLS
 from strategy_agent.utils import init_model
 
@@ -36,7 +36,7 @@ class StrategyAssistantNode:
     def __init__(self, node_name: str):
         self.node_name = node_name
 
-    async def __call__(self, state: State, *, config: Optional[RunnableConfig] = None):
+    async def __call__(self, state: StrategyAgentState, *, config: Optional[RunnableConfig] = None):
         """Execute the analysis node with the common pattern."""
         configuration = Configuration.from_runnable_config(config)
 
@@ -89,7 +89,7 @@ class StrategyAssistantNode:
             )
 
 
-def route_model_output(state: State) -> Literal["__end__", "tools"]:
+def route_model_output(state: StrategyAgentState) -> Literal["__end__", "tools"]:
     """Determine the next node based on the model's output.
 
     This function checks if the model's last message contains tool calls.
@@ -117,7 +117,7 @@ def create_strategy_planner():
     strategy_assistant = StrategyAssistantNode("strategy_assistant")
 
     builder = StateGraph(
-        state_schema=State,
+        state_schema=StrategyAgentState,
         input=InputState,
         config_schema=Configuration,
     )
