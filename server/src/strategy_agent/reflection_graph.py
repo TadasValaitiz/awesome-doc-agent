@@ -35,11 +35,18 @@ def create_reflection_graph(
     if "messages" not in field_names:
         raise ValueError("Missing required field 'messages' in state_schema")
 
-    if "judge_feedback" not in field_names:
-        raise ValueError("Missing required field 'judge_feedback' in state_schema")
+    if "strategy_feedback" not in field_names:
+        raise ValueError("Missing required field 'strategy_feedback' in state_schema")
 
-    if "judge_approved" not in field_names:
-        raise ValueError("Missing required field 'judge_approved' in state_schema")
+    if "strategy_approved" not in field_names:
+        raise ValueError("Missing required field 'strategy_approved' in state_schema")
+
+    if "code_feedback" not in field_names:
+        raise ValueError("Missing required field 'code_feedback' in state_schema")
+
+    if "code_approved" not in field_names:
+        raise ValueError("Missing required field 'code_approved' in state_schema")
+
 
     rgraph = StateGraph(state_schema, config_schema=config_schema)
     rgraph.add_node("graph", graph)

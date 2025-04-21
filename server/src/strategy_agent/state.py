@@ -33,5 +33,7 @@ class StrategyAgentState(InputState):
 
     is_last_step: IsLastStep = field(default=False)
     remaining_steps: RemainingSteps = field(default=0)
-    judge_feedback: Optional[str] = field(default=None)
-    judge_approved: bool = field(default=False)
+    strategy_feedback: Optional[str] = field(default=None)
+    strategy_approved: bool = field(default=False)
+    code_feedback: Optional[str] = field(default=None)
+    code_approved: bool = field(default=False)

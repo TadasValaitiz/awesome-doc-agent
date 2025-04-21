@@ -31,13 +31,19 @@ from strategy_agent.tools import TOOLS
 from strategy_agent.utils import init_model
 from strategy_agent.reflection_graph import create_reflection_graph
 from strategy_agent.trading_strategy_judge import trading_strategy_judge_graph
-
-
-graph = create_reflection_graph(
-    create_strategy_planner(),
-    trading_strategy_judge_graph,
-    state_schema=StrategyAgentState,
-    config_schema=Configuration,
+from strategy_agent.strategy_planner_graph import (
+    create_strategy_planner_with_reflection_graph,
 )
+from strategy_agent.coding_graph import create_coding_with_reflection_graph
 
-graph.compile(name="StrategyAgent")
+
+def graph(config: RunnableConfig):
+    graph = StateGraph(StrategyAgentState, config_schema=Configuration)
+    graph.add_node(
+        "strategy_planner", create_strategy_planner_with_reflection_graph(config)
+    )
+    graph.add_node("strategy_coder", create_coding_with_reflection_graph(config))
+    graph.add_edge(START, "strategy_planner")
+    graph.add_edge("strategy_planner", "strategy_coder")
+    graph.add_edge("strategy_coder", END)
+    return graph.compile(name="StrategyAgent")

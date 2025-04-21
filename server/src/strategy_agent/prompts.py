@@ -51,6 +51,9 @@ Your implementation must:
 6. Include a custom CurrentData class to structure price and indicator data
 
 Focus on implementing a complete, functional strategy that follows the design patterns established in the BaseStrategy class.
+
+Conversation History:
+{history}
 """
 
 rag_fusion = """

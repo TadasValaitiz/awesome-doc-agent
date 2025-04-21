@@ -20,6 +20,7 @@ from langchain_core.messages import (
 )
 from langchain_core.runnables import RunnableConfig, RunnablePassthrough, RunnableLambda
 from langchain_core.prompts import ChatPromptTemplate, FewShotChatMessagePromptTemplate
+from langchain_core.output_parsers import StrOutputParser
 from langchain.output_parsers import PydanticOutputParser
 from pydantic import BaseModel
 import pandas as pd
@@ -32,29 +33,34 @@ from strategy_agent.configuration import Configuration
 from strategy_agent.state import InputState, StrategyAgentState
 from strategy_agent.tools import TOOLS
 from strategy_agent.utils import init_model
-
-
+from strategy_agent.coding_judge_graph import create_code_judge_graph
+from strategy_agent.reflection_graph import create_reflection_graph
 class StrategyCodeNode:
     """Abstract base class for analysis nodes that follow a common pattern."""
 
     def __init__(self, node_name: str):
         self.node_name = node_name
 
-    async def __call__(self, state: StrategyAgentState, *, config: Optional[RunnableConfig] = None):
+    async def __call__(
+        self, state: StrategyAgentState, *, config: Optional[RunnableConfig] = None
+    ):
         """Execute the analysis node with the common pattern."""
         configuration = Configuration.from_runnable_config(config)
 
-        model = init_model(config)
+        def extract_prompt(s: StrategyAgentState):
+            history = ChatPromptTemplate.from_messages(s.messages).format()
+            return {
+                "code_example": "",
+                "history": history,
+            }
 
-        # Format the system prompt. Customize this to change the agent's behavior.
-        system_message = configuration.chat_system_prompt.format(
-            system_time=datetime.now(tz=timezone.utc).isoformat()
-        )
+        prompt = ChatPromptTemplate.from_template(configuration.code_system_prompt)
+        llm = init_model(configuration.code_model)
+
+        chain = extract_prompt | prompt | llm | StrOutputParser()
 
         chunks = []
-        async for chunk in model.astream(
-            [{"role": "system", "content": system_message}, *state.messages], config
-        ):
+        async for chunk in chain.astream(state, config):
             chunks.append(chunk)
             yield Command(update={"messages": [chunk]})
 
@@ -64,61 +70,23 @@ class StrategyCodeNode:
             chunks[0],
         )
 
-        # Handle the case when it's the last step and the model still wants to use a tool
-        if (
-            state.is_last_step
-            and final_message.additional_kwargs.get("tool_calls") is not None
-        ):
-            yield Command(
-                update={
-                    "messages": [
-                        AIMessage(
-                            id=final_message.id,
-                            content="Sorry, I could not find an answer to your question in the specified number of steps.",
-                        )
-                    ]
-                }
-            )
-        else:
-            yield Command(
-                update={
-                    "messages": [
-                        AIMessage(
-                            id=final_message.id,
-                            content=final_message.content,
-                            additional_kwargs=final_message.additional_kwargs,
-                        )
-                    ]
-                }
-            )
-
-
-def route_model_output(state: StrategyAgentState) -> Literal["__end__", "tools"]:
-    """Determine the next node based on the model's output.
-
-    This function checks if the model's last message contains tool calls.
-
-    Args:
-        state (State): The current state of the conversation.
-
-    Returns:
-        str: The name of the next node to call ("__end__" or "tools").
-    """
-
-    last_message = state.messages[-1]
-    if not isinstance(last_message, AIMessage):
-        raise ValueError(
-            f"Expected AIMessage in output edges, but got {type(last_message).__name__}"
+        yield Command(
+            update={
+                "messages": [
+                    AIMessage(
+                        id=final_message.id,
+                        content=final_message.content,
+                        additional_kwargs=final_message.additional_kwargs,
+                    )
+                ]
+            }
         )
 
-    if not last_message.tool_calls:
-        return "__end__"
-    # Otherwise we execute the requested actions
-    return "tools"
 
 
-def create_strategy_planner():
-    strategy_assistant = StrategyCodeNode("strategy_assistant")
+
+def create_strategy_coder():
+    strategy_code = StrategyCodeNode("strategy_coder")
 
     builder = StateGraph(
         state_schema=StrategyAgentState,
@@ -126,22 +94,17 @@ def create_strategy_planner():
         config_schema=Configuration,
     )
 
-    builder.add_node(strategy_assistant.node_name, strategy_assistant)
-    builder.add_node("tools", ToolNode(TOOLS))
-    builder.add_edge(START, strategy_assistant.node_name)
-    builder.add_conditional_edges(
-        strategy_assistant.node_name,
-        route_model_output,
-    )
-    builder.add_edge("tools", strategy_assistant.node_name)
+    builder.add_node(strategy_code.node_name, strategy_code)
+    builder.add_edge(START, strategy_code.node_name)
+    builder.add_edge(strategy_code.node_name, END)
 
     return builder.compile(
-        interrupt_before=[], interrupt_after=[], name="StrategyPlannerAgent"
+        interrupt_before=[], interrupt_after=[], name="StrategyCoderAgent"
     )
-
 
 
 _GLOBAL_SANDBOX = None
+
 
 def get_or_create_sandbox():
     global _GLOBAL_SANDBOX
@@ -150,22 +113,17 @@ def get_or_create_sandbox():
     return _GLOBAL_SANDBOX
 
 
-def create_reflection_agent(
+def create_coding_with_reflection_graph(
     config: RunnableConfig,
 ):
     configurable = config.get("configurable", {})
     sandbox = configurable.get("sandbox", None)
-    model = configurable.get("model", None)
     if sandbox is None:
         sandbox = get_or_create_sandbox()
-    if model is None:
-        model = init_chat_model(
-            model="anthropic:claude-3-5-haiku-latest",
-            max_tokens=4096,
-        )
-    judge = create_code_judge_graph(sandbox)
+
     return (
-        create_reflection_graph(create_base_agent(model), judge, MessagesState)
-        .compile()
-        .with_config(run_name="Mini Chat LangChain")
+        create_reflection_graph(create_strategy_coder(), create_code_judge_graph(sandbox), StrategyAgentState)
+        .compile(
+            interrupt_before=[], interrupt_after=[], name="StrategyCoderReflection"
+        )
     )

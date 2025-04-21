@@ -59,7 +59,7 @@ async def search_trading_ideas(
     """
 
     configuration = Configuration.from_runnable_config(config)
-    llm = init_model(config)
+    llm = init_model(configuration.chat_model)
 
     rag_fusion_prompt = ChatPromptTemplate.from_template(prompts.rag_fusion)
 

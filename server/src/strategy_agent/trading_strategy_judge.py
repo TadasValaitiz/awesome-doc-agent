@@ -54,11 +54,11 @@ def judge_trading_strategy(state, config):
             ]
         }
     if eval_result["score"]:
-        return {"judge_feedback": eval_result["comment"], "judge_approved": True}
+        return {"strategy_feedback": eval_result["comment"], "strategy_approved": True}
     else:
         return {
-            "judge_feedback": eval_result["comment"],
-            "judge_approved": False,
+            "strategy_feedback": eval_result["comment"],
+            "strategy_approved": False,
             "messages": [{"role": "user", "content": eval_result["comment"]}],
         }
 

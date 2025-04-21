@@ -28,7 +28,8 @@ from strategy_agent.configuration import Configuration
 from strategy_agent.state import InputState, StrategyAgentState
 from strategy_agent.tools import TOOLS
 from strategy_agent.utils import init_model
-
+from strategy_agent.reflection_graph import create_reflection_graph
+from strategy_agent.trading_strategy_judge import trading_strategy_judge_graph
 
 class StrategyAssistantNode:
     """Abstract base class for analysis nodes that follow a common pattern."""
@@ -40,7 +41,7 @@ class StrategyAssistantNode:
         """Execute the analysis node with the common pattern."""
         configuration = Configuration.from_runnable_config(config)
 
-        model = init_model(config).bind_tools(TOOLS)
+        model = init_model(configuration.chat_model).bind_tools(TOOLS)
 
         # Format the system prompt. Customize this to change the agent's behavior.
         system_message = configuration.chat_system_prompt.format(
@@ -134,3 +135,11 @@ def create_strategy_planner():
     return builder.compile(
         interrupt_before=[], interrupt_after=[], name="StrategyPlannerAgent"
     )
+
+def create_strategy_planner_with_reflection_graph(config: RunnableConfig,) :
+    return create_reflection_graph(
+        create_strategy_planner(),
+        trading_strategy_judge_graph,
+        state_schema=StrategyAgentState,
+        config_schema=Configuration,
+    ).compile(name="StrategyPlannerReflection")
