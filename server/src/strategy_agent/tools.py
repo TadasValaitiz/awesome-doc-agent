@@ -15,11 +15,15 @@ from langchain_core.tools import InjectedToolArg
 from typing_extensions import Annotated
 
 from strategy_agent.configuration import Configuration
+from langgraph.types import Command
 from langchain.output_parsers import PydanticOutputParser
 from langchain_core.prompts import ChatPromptTemplate, FewShotChatMessagePromptTemplate
 from langchain_core.runnables import RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
+from langchain_core.tools.base import InjectedToolCallId
+from langchain_core.tools import tool
+from langchain_core.messages import ToolMessage
 
 from strategy_agent import prompts
 from strategy_agent.utils import init_model, reciprocal_rank_fusion, take_top_k
@@ -42,8 +46,12 @@ async def search(
     return cast(list[dict[str, Any]], result)
 
 
+@tool
 async def search_trading_ideas(
-    query: str, *, config: Annotated[RunnableConfig, InjectedToolArg]
+    query: str,
+    tool_call_id: Annotated[str, InjectedToolCallId],
+    *,
+    config: Annotated[RunnableConfig, InjectedToolArg]
 ):
     """Search for trading strategies, trading indicators, entry and exit conditions
 
@@ -81,21 +89,15 @@ async def search_trading_ideas(
         | load_strategies
     )
 
-    # rag_fusion_chain = prepare_prompt
-    #         | rag_fusion_prompt
-    #         | RunnablePassthrough(
-    #             lambda x: stream_handler.step_update(step="Querying Rag")
-    #         )
-    #         | llm
-    #         | StrOutputParser()
-    #         | (lambda x: x.split("\n"))
-    #         | self.vector_db.strategy_retriever().map()
-    #         | reciprocal_rank_fusion
-    #         | partial(take_top_k, k=5)
-    #         | self.load_strategies
+    result = await rag_fusion_chain.ainvoke(query)
 
-    # )
-    return await rag_fusion_chain.ainvoke(query)
+    return Command(
+        update={
+            "messages": [
+                ToolMessage(content="\n".join(result), tool_call_id=tool_call_id)
+            ]
+        }
+    )
 
 
 TOOLS: List[Callable[..., Any]] = [search_trading_ideas]
