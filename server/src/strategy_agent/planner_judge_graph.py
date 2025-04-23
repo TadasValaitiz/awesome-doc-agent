@@ -33,7 +33,7 @@ Be detailed in your critique so the assistant can understand exactly how to impr
 
 
 # Define the judge function with a robust evaluation approach
-def judge_trading_strategy(state, config):
+def judge_planner(state, config):
     """Evaluate the assistant's trading strategy plan using a separate judge model."""
     evaluator = create_llm_as_judge(
         prompt=trading_strategy_critique_prompt,
@@ -64,10 +64,12 @@ def judge_trading_strategy(state, config):
 
 
 # Define the judge graph
-trading_strategy_judge_graph = (
-    StateGraph(StrategyAgentState)
-    .add_node(judge_trading_strategy)
-    .add_edge(START, "judge_trading_strategy")
-    .add_edge("judge_trading_strategy", END)
-    .compile()
-)
+def create_planner_judge_graph():
+    graph = StateGraph(StrategyAgentState)
+    graph.add_node(
+        "judge_planner",
+        judge_planner,
+    )
+    graph.add_edge(START, "judge_planner")
+    graph.add_edge("judge_planner", END)
+    return graph.compile()

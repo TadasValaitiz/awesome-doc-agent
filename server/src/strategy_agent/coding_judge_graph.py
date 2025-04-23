@@ -1,12 +1,12 @@
-from e2b_code_interpreter import Sandbox
+from e2b_code_interpreter import AsyncSandbox
 
 from langgraph.graph import StateGraph
-from openevals.code.e2b.pyright import create_e2b_pyright_evaluator
+from openevals.code.e2b.pyright import create_async_e2b_pyright_evaluator
 from strategy_agent.state import StrategyAgentState
 
-def create_code_judge_graph(sandbox: Sandbox):
+def create_code_judge_graph(sandbox: AsyncSandbox):
     def run_reflection(state: dict) -> dict | None:
-        evaluator = create_e2b_pyright_evaluator(
+        evaluator = create_async_e2b_pyright_evaluator(
             sandbox=sandbox,
             code_extraction_strategy="markdown_code_blocks",
         )

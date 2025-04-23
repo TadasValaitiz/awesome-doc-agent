@@ -1,6 +1,7 @@
 from typing import Optional
 
-from e2b_code_interpreter import Sandbox
+from e2b_code_interpreter import Sandbox, AsyncSandbox
+import asyncio
 
 from strategy_agent.state import StrategyAgentState
 
@@ -35,6 +36,9 @@ from strategy_agent.tools import TOOLS
 from strategy_agent.utils import init_model
 from strategy_agent.coding_judge_graph import create_code_judge_graph
 from strategy_agent.reflection_graph import create_reflection_graph
+from strategy_agent.logger import server_logger
+
+
 class StrategyCodeNode:
     """Abstract base class for analysis nodes that follow a common pattern."""
 
@@ -57,7 +61,7 @@ class StrategyCodeNode:
         prompt = ChatPromptTemplate.from_template(configuration.code_system_prompt)
         llm = init_model(configuration.code_model)
 
-        chain = extract_prompt | prompt | llm | StrOutputParser()
+        chain = extract_prompt | prompt | llm
 
         chunks = []
         async for chunk in chain.astream(state, config):
@@ -83,8 +87,6 @@ class StrategyCodeNode:
         )
 
 
-
-
 def create_strategy_coder():
     strategy_code = StrategyCodeNode("strategy_coder")
 
@@ -106,24 +108,21 @@ def create_strategy_coder():
 _GLOBAL_SANDBOX = None
 
 
-def get_or_create_sandbox():
+async def async_get_or_create_sandbox():
     global _GLOBAL_SANDBOX
     if _GLOBAL_SANDBOX is None:
-        _GLOBAL_SANDBOX = Sandbox("OpenEvalsPython")
+        _GLOBAL_SANDBOX = await AsyncSandbox.create("OpenEvalsPython")
     return _GLOBAL_SANDBOX
 
 
-def create_coding_with_reflection_graph(
+async def create_coding_with_reflection_graph(
     config: RunnableConfig,
 ):
     configurable = config.get("configurable", {})
     sandbox = configurable.get("sandbox", None)
     if sandbox is None:
-        sandbox = get_or_create_sandbox()
+        sandbox = await async_get_or_create_sandbox()
 
-    return (
-        create_reflection_graph(create_strategy_coder(), create_code_judge_graph(sandbox), StrategyAgentState)
-        .compile(
-            interrupt_before=[], interrupt_after=[], name="StrategyCoderReflection"
-        )
-    )
+    return create_reflection_graph(
+        create_strategy_coder(), create_code_judge_graph(sandbox), StrategyAgentState
+    ).compile(interrupt_before=[], interrupt_after=[], name="StrategyCoderReflection")

@@ -29,7 +29,8 @@ from strategy_agent.state import InputState, StrategyAgentState
 from strategy_agent.tools import TOOLS
 from strategy_agent.utils import init_model
 from strategy_agent.reflection_graph import create_reflection_graph
-from strategy_agent.trading_strategy_judge import trading_strategy_judge_graph
+from strategy_agent.planner_judge_graph import create_planner_judge_graph
+
 
 class StrategyAssistantNode:
     """Abstract base class for analysis nodes that follow a common pattern."""
@@ -37,7 +38,9 @@ class StrategyAssistantNode:
     def __init__(self, node_name: str):
         self.node_name = node_name
 
-    async def __call__(self, state: StrategyAgentState, *, config: Optional[RunnableConfig] = None):
+    async def __call__(
+        self, state: StrategyAgentState, *, config: Optional[RunnableConfig] = None
+    ):
         """Execute the analysis node with the common pattern."""
         configuration = Configuration.from_runnable_config(config)
 
@@ -114,7 +117,7 @@ def route_model_output(state: StrategyAgentState) -> Literal["__end__", "tools"]
     return "tools"
 
 
-def create_strategy_planner():
+def create_planner_graph():
     strategy_assistant = StrategyAssistantNode("strategy_assistant")
 
     builder = StateGraph(
@@ -136,10 +139,13 @@ def create_strategy_planner():
         interrupt_before=[], interrupt_after=[], name="StrategyPlannerAgent"
     )
 
-def create_strategy_planner_with_reflection_graph(config: RunnableConfig,) :
+
+def create_planner_with_reflection_graph(
+    config: RunnableConfig,
+):
     return create_reflection_graph(
-        create_strategy_planner(),
-        trading_strategy_judge_graph,
+        create_planner_graph(),
+        create_planner_judge_graph(),
         state_schema=StrategyAgentState,
         config_schema=Configuration,
     ).compile(name="StrategyPlannerReflection")
