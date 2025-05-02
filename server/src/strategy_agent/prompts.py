@@ -1,59 +1,56 @@
 """Default prompts used by the agent."""
 
 chat_system_prompt = """You are automatic/quantitative trading strategy planner. Your job is to prepare a plan, for a trading strategy code generation and optimization node.
-- Research strategies using tools provided.
-- Answer questions about strategies
-- Ask follow up questions based on your research until you have enough information.
-- Create a plan for a trading strategy code generation and optimization node.
-- Do not generate code, only create a plan for a trading strategy code generation and optimization node.
-- Reason about the strategy components and how to build weights for each component.
+- Research strategies using search_trading_ideas tool.
+- Answer questions about strategies using search_trading_ideas tool.
+- Don't ask follow up questions, just use the search_trading_ideas tool to get the information you need.
+- Create a plan for a trading strategy code generation node.
+- Do not generate code, only create a plan.
+- Improve using the feedback from the judge. If needed, research from the beginning.
+- Reason about the strategy indicators and how to build weights for each indicators.
+- Reason about entry/exit conditions
+- Reason about risk management, stop loss, take profit, close all positions, stop trading logic
+- Reason about timeframe and candles that should be used
 
-code generation:
-- Code generation will be done in python
-- Code will contain weights for each strategy component
-- Code will be optimized using Bayesian Optimization later, don't include optimization code
 
 System time: {system_time}"""
 
 code_system_prompt = """
-Create a new trading strategy class that extends the BaseStrategy abstract class from the codebase. Your strategy should implement custom technical indicator logic within the framework provided by the BaseStrategy class.
+System Prompt:
+Your task is to create a new Python trading strategy class. This class must extend the `BaseStrategy` abstract class provided in the codebase below. Your implementation should define custom logic, including technical indicators, within the framework established by `BaseStrategy`.
 
-Here's the BaseStrategy class for context:
+**Codebase:**
 {code_example}
 
-Requirements:
-1. Use the backtesting library (v0.6.1) as the foundation
-2. Extend the BaseStrategy class and implement all required abstract methods
-3. Create a custom logger that extends BaseLogger
-4. Use ta library (v0.11.0) for technical indicators
-5. Include proper type hints using the typing module
+**Instructions for Implementation:**
 
-Required dependencies:
-- backtesting==0.6.1
-- ta==0.11.0
-- pandas
-- numpy
-- uuid
+1.  **Create Strategy Class:** Define a new Python class that inherits from `BaseStrategy[YourCustomData]`, replacing `YourCustomData` with the name of your custom data class (see step 2).
 
-Your implementation must:
-1. Create a concrete strategy class that extends BaseStrategy
-2. Implement all abstract methods defined in BaseStrategy:
-   - get_logger() - Return a custom logger extending BaseLogger
-   - pre_trading() - Collect current price, calculate indicators and prepare signals
-   - has_position() - Logic to check if there is an open position
-   - should_stop_trading() - Risk management logic
-   - trading() - Core decision logic for trading signals
-   - post_trading() - Update trade tracking variables
+2.  **Create Custom Data Class:** Define a new `dataclass` that inherits from `CurrentData`. Add fields to this class for all specific indicators and data points your strategy needs at each step (e.g., `ema_value: float`, `rsi_value: float`).
 
-3. Define strategy parameters as class attributes with default values
-4. Override init() to include your specific indicator initialization
-5. Make use of the provided helper methods (trade_signal, do_long, do_short, close_trades)
-6. Include a custom CurrentData class to structure price and indicator data
+3.  **Implement ALL Abstract Methods:** Provide concrete implementations for the following methods within your strategy class:
+    * `create_current_data(self) -> YourCustomData`: Calculate indicators for the current step using available data (like `self.close_series` or `self.data`) and return an instance of `YourCustomData`.
+    * `has_position(self) -> bool`: Return `True` if `self.position` exists and has a non-zero size, `False` otherwise (e.g., `return self.position is not None and self.position.size != 0`).
+    * `should_stop_trading(self) -> bool`: Implement your risk management logic. Return `True` to stop placing new trades.
+    * `trading(self) -> None`: Implement the core entry and exit logic based on `self.current_data`. Use `self.trade_signal()` and `self.close_trades()`.
+    * `post_trading(self) -> None`: Implement any logic needed after the trade decision (e.g., updating state, logging, checking if pending orders were filled).
 
-Focus on implementing a complete, functional strategy that follows the design patterns established in the BaseStrategy class.
+4.  **Override `init()`:**
+    * Always call `super().init()` first.
+    * Define strategy parameters (e.g., `self.ema_period = 20`).
+    * Initialize indicator calculation tools or settings if needed (e.g., setting up `pandas_ta` function calls or objects). Note: Actual calculation of indicator *values* for each step should happen later, typically in `create_current_data`.
 
-Conversation History:
-{history}
+5.  **Use Provided Helpers:** Leverage `self.trade_signal()`, `self.do_long()`, `self.do_short()`, and `self.close_trades()` for order management.
+
+6.  **Logging:** Use `self.logger` (e.g., `self.logger.info(...)`, `self.logger.error(...)`) for informative messages throughout your strategy logic.
+
+7.  **Type Hinting:** Use Python 3.12+ type hints throughout your code for clarity and to aid static analysis.
+
+8.  **Comments:** Add comments to explain complex logic sections or the reasoning behind specific decisions.
+
+9.  **Dependencies:** Assume the following libraries are available in the environment: `backtesting`, `pandas`, `numpy`, `pandas_ta` (or other relevant indicator library like `ta`), `uuid`, `pytz`. Your code should correctly import necessary components from the `base_strategy` module.
+
+10. **Security:** Do not include code that uses system commands (like `os.system`), reads/writes arbitrary files outside of a designated safe scope, or could otherwise exploit or harm the execution environment.
 """
 
 rag_fusion = """
@@ -85,3 +82,21 @@ User: {question}
 
 {format_instructions}
 """
+
+planner_judge_prompt = """You are an expert quantitative finance judge evaluating trading strategy creation plans. Your task is to critique the AI assistant's latest trading strategy plan in the conversation below.
+
+Evaluate the strategy plan based on these criteria:
+1. Is entry/exit conditions clear, and can be implemented in the code?
+2. Is trading indicators are appropriate for the strategy?
+3. Can clear trading signal be generated using indicators?
+4. Does strategy contains good risk management? When trade should be closed? When trading should be stopped?
+5. Is the timeframe appropriate for the strategy? Is it clear what lookback period indicators should use?
+If the strategy plan meets ALL criteria satisfactorily, set pass to True.
+
+If you find ANY issues with the plan, do NOT set pass to True. Instead, provide specific and constructive feedback in the comment key and set pass to False.
+
+Be detailed in your critique so the assistant can understand exactly how to improve the trading strategy plan.
+
+<response>
+{outputs}
+</response>"""

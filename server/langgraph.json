@@ -7,6 +7,7 @@
     "react_agent": "./src/react_agent/graph.py:graph",
     "strategy_agent": "./src/strategy_agent/graph.py:graph",
     "strategy_agent_coding": "./src/strategy_agent/coding_graph.py:create_coding_with_reflection_graph",
+    "coding_judge": "./src/strategy_agent/coding_judge_graph.py:create_code_judge_graph",
     "strategy_agent_planner": "./src/strategy_agent/planner_graph.py:create_planner_with_reflection_graph"
   },
   "env": ".env",

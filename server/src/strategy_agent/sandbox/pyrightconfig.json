@@ -1,0 +1,10 @@
+{
+  "include": [
+    "/Users/tadas/Projects/tilda/poc/turing-college/tvalai-AE.3.5/server/src/strategy_agent/sandbox/sandbox_files"
+  ],
+  "typeCheckingMode": "basic",
+  "useLibraryCodeForTypes": true,
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+  "pythonVersion": "3.10"
+}

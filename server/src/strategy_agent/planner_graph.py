@@ -122,7 +122,7 @@ def create_planner_graph():
 
     builder = StateGraph(
         state_schema=StrategyAgentState,
-        input=InputState,
+        input=StrategyAgentState,
         config_schema=Configuration,
     )
 

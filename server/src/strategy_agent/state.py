@@ -7,7 +7,7 @@ from typing import Optional, Sequence
 
 from langchain_core.messages import AnyMessage
 from langgraph.graph import add_messages
-from langgraph.managed import IsLastStep,RemainingSteps
+from langgraph.managed import IsLastStep, RemainingSteps
 from typing_extensions import Annotated
 
 
@@ -23,7 +23,6 @@ class InputState:
     )
 
 
-
 @dataclass
 class StrategyAgentState(InputState):
     """Represents the complete state of the agent, extending InputState with additional attributes.
@@ -35,5 +34,8 @@ class StrategyAgentState(InputState):
     remaining_steps: RemainingSteps = field(default=0)
     strategy_feedback: Optional[str] = field(default=None)
     strategy_approved: bool = field(default=False)
+    strategy_message_index: int = field(default=0)
     code_feedback: Optional[str] = field(default=None)
     code_approved: bool = field(default=False)
+    code_output: Optional[str] = field(default=None)
+    judge_skip: bool = field(default=False)

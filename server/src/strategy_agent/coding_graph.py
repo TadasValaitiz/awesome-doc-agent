@@ -3,6 +3,7 @@ from typing import Optional
 from e2b_code_interpreter import Sandbox, AsyncSandbox
 import asyncio
 
+from strategy_agent.coding_utils import base_strategy_example
 from strategy_agent.state import StrategyAgentState
 
 from langchain_core.runnables import RunnableConfig
@@ -18,9 +19,14 @@ from langchain_core.messages import (
     HumanMessage,
     ToolMessage,
     BaseMessageChunk,
+    SystemMessage,
 )
 from langchain_core.runnables import RunnableConfig, RunnablePassthrough, RunnableLambda
-from langchain_core.prompts import ChatPromptTemplate, FewShotChatMessagePromptTemplate
+from langchain_core.prompts import (
+    ChatPromptTemplate,
+    FewShotChatMessagePromptTemplate,
+    MessagesPlaceholder,
+)
 from langchain_core.output_parsers import StrOutputParser
 from langchain.output_parsers import PydanticOutputParser
 from pydantic import BaseModel
@@ -31,12 +37,11 @@ from langgraph.prebuilt import ToolNode
 from langgraph.types import Command, interrupt
 
 from strategy_agent.configuration import Configuration
-from strategy_agent.state import InputState, StrategyAgentState
+from strategy_agent.state import StrategyAgentState
 from strategy_agent.tools import TOOLS
 from strategy_agent.utils import init_model
 from strategy_agent.coding_judge_graph import create_code_judge_graph
 from strategy_agent.reflection_graph import create_reflection_graph
-from strategy_agent.logger import server_logger
 
 
 class StrategyCodeNode:
@@ -50,18 +55,28 @@ class StrategyCodeNode:
     ):
         """Execute the analysis node with the common pattern."""
         configuration = Configuration.from_runnable_config(config)
+        code_example = await base_strategy_example()
 
-        def extract_prompt(s: StrategyAgentState):
-            history = ChatPromptTemplate.from_messages(s.messages).format()
+        def extract_messages(state: StrategyAgentState):
+
+            formatted_system = configuration.code_system_prompt.format(
+                code_example=code_example
+            )
+
             return {
-                "code_example": "",
-                "history": history,
+                "conversation": [
+                    SystemMessage(content=formatted_system),
+                    *state.messages[state.strategy_message_index :],
+                ]
             }
 
-        prompt = ChatPromptTemplate.from_template(configuration.code_system_prompt)
         llm = init_model(configuration.code_model)
 
-        chain = extract_prompt | prompt | llm
+        prompt = ChatPromptTemplate.from_messages(
+            [MessagesPlaceholder(variable_name="conversation", optional=True)]
+        )
+
+        chain = extract_messages | prompt | llm
 
         chunks = []
         async for chunk in chain.astream(state, config):
@@ -92,7 +107,7 @@ def create_strategy_coder():
 
     builder = StateGraph(
         state_schema=StrategyAgentState,
-        input=InputState,
+        input=StrategyAgentState,
         config_schema=Configuration,
     )
 
@@ -105,24 +120,12 @@ def create_strategy_coder():
     )
 
 
-_GLOBAL_SANDBOX = None
-
-
-async def async_get_or_create_sandbox():
-    global _GLOBAL_SANDBOX
-    if _GLOBAL_SANDBOX is None:
-        _GLOBAL_SANDBOX = await AsyncSandbox.create("OpenEvalsPython")
-    return _GLOBAL_SANDBOX
-
-
 async def create_coding_with_reflection_graph(
     config: RunnableConfig,
 ):
-    configurable = config.get("configurable", {})
-    sandbox = configurable.get("sandbox", None)
-    if sandbox is None:
-        sandbox = await async_get_or_create_sandbox()
 
     return create_reflection_graph(
-        create_strategy_coder(), create_code_judge_graph(sandbox), StrategyAgentState
+        create_strategy_coder(),
+        await create_code_judge_graph(config),
+        StrategyAgentState,
     ).compile(interrupt_before=[], interrupt_after=[], name="StrategyCoderReflection")
