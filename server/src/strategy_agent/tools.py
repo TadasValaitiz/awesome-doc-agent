@@ -14,6 +14,7 @@ from langchain_core.runnables import RunnableConfig
 from langchain_core.tools import InjectedToolArg
 from typing_extensions import Annotated
 
+from strategy_agent.state import StrategyAgentState
 from strategy_agent.configuration import Configuration
 from langgraph.types import Command
 from langchain.output_parsers import PydanticOutputParser
@@ -24,11 +25,20 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_core.tools.base import InjectedToolCallId
 from langchain_core.tools import tool
 from langchain_core.messages import ToolMessage
+from langgraph.graph import StateGraph
+
+from strategy_agent.sandbox.pyright import analize_code_with_pyright
+from strategy_agent.coding_extractors import extract_code_from_markdown_code_blocks
+from strategy_agent.state import StrategyAgentState
+from strategy_agent.logger import server_logger
+from langchain_core.runnables import RunnableConfig
+from langchain_core.messages import HumanMessage
 
 from strategy_agent import prompts
 from strategy_agent.utils import init_model, reciprocal_rank_fusion, take_top_k
 from strategy_agent.vector_db import AsyncVectorDB, VectorDB
 from strategy_agent.database import StrategyDb, TradingStrategyDefinition
+from strategy_agent.logger import server_logger
 
 
 async def search(
@@ -51,7 +61,7 @@ async def search_trading_ideas(
     query: str,
     tool_call_id: Annotated[str, InjectedToolCallId],
     *,
-    config: Annotated[RunnableConfig, InjectedToolArg]
+    config: Annotated[RunnableConfig, InjectedToolArg],
 ):
     """Search for trading strategies, trading indicators, entry and exit conditions
 
@@ -100,4 +110,68 @@ async def search_trading_ideas(
     )
 
 
-TOOLS: List[Callable[..., Any]] = [search_trading_ideas]
+@tool
+async def code_check_with_pyright(
+    code_markdown: str,
+    tool_call_id: Annotated[str, InjectedToolCallId],
+    *,
+    config: Annotated[RunnableConfig, InjectedToolArg],
+):
+    """Validate and check Python code for errors and quality issues
+
+    Use this tool to ensure your Python code is error-free before executing it. It performs static analysis using pyright
+    to catch type errors, undefined variables, import issues, and other common programming mistakes.
+
+    Always run this tool when generating Python code to:
+    - Find and fix bugs before execution
+    - Ensure code follows best practices
+    - Verify type correctness
+    - Identify potential runtime errors
+
+    Simply pass your Python code wrapped in markdown code blocks and receive detailed feedback on any issues found.
+    """
+    code = extract_code_from_markdown_code_blocks(code_markdown)
+
+    result = await analize_code_with_pyright(code)
+
+    # After code execution, download and log any output files
+
+    if result and not result[0]:
+        errors = [error["errorWithContext"] for error in result[1]]
+        prettyErrors = "\n\n".join(errors)
+
+        content = f"""
+I ran pyright and found some problems with the code you generated:
+
+```python
+{code}
+```
+
+Errors:
+{prettyErrors}
+
+Instructions:
+Try to fix it. Make sure to regenerate the entire code snippet.
+"""
+
+        message = ToolMessage(content=content, tool_call_id=tool_call_id)
+        return Command(
+            update={
+                "messages": [message],
+                "code_approved": False,
+                "code_feedback": errors,
+                "code_output": code,
+            }
+        )
+
+    return Command(
+        update={
+            "code_approved": True,
+            "code_feedback": None,
+            "code_output": code,
+        }
+    )
+
+
+PLANNER_TOOLS: List[Callable[..., Any]] = [search_trading_ideas]
+CODER_TOOLS: List[Callable[..., Any]] = [code_check_with_pyright]

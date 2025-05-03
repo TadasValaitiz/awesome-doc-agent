@@ -26,7 +26,7 @@ from langgraph.types import Command, interrupt
 
 from strategy_agent.configuration import Configuration
 from strategy_agent.state import InputState, StrategyAgentState
-from strategy_agent.tools import TOOLS
+from strategy_agent.tools import PLANNER_TOOLS
 from strategy_agent.utils import init_model
 from strategy_agent.reflection_graph import create_reflection_graph
 from strategy_agent.planner_judge_graph import create_planner_judge_graph
@@ -44,7 +44,7 @@ class StrategyAssistantNode:
         """Execute the analysis node with the common pattern."""
         configuration = Configuration.from_runnable_config(config)
 
-        model = init_model(configuration.chat_model).bind_tools(TOOLS)
+        model = init_model(configuration.chat_model).bind_tools(PLANNER_TOOLS)
 
         # Format the system prompt. Customize this to change the agent's behavior.
         system_message = configuration.chat_system_prompt.format(
@@ -127,7 +127,7 @@ def create_planner_graph():
     )
 
     builder.add_node(strategy_assistant.node_name, strategy_assistant)
-    builder.add_node("tools", ToolNode(TOOLS))
+    builder.add_node("tools", ToolNode(PLANNER_TOOLS))
     builder.add_edge(START, strategy_assistant.node_name)
     builder.add_conditional_edges(
         strategy_assistant.node_name,

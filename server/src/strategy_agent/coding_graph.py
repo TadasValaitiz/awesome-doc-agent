@@ -38,7 +38,7 @@ from langgraph.types import Command, interrupt
 
 from strategy_agent.configuration import Configuration
 from strategy_agent.state import StrategyAgentState
-from strategy_agent.tools import TOOLS
+from strategy_agent.tools import PLANNER_TOOLS
 from strategy_agent.utils import init_model
 from strategy_agent.coding_judge_graph import create_code_judge_graph
 from strategy_agent.reflection_graph import create_reflection_graph
