@@ -22,25 +22,26 @@ async def base_strategy_example():
         base_dir = file_path.parent.parent
 
         # Construct correct paths with the base_strategy directory
-        base_strategy_dir = (
-            base_dir / "strategy_agent" / "sandbox" / "sandbox_files" / "base_strategy"
-        )
+        base_sandbox_dir = base_dir / "strategy_agent" / "sandbox" / "sandbox_files"
+        strategy_module_dir = base_sandbox_dir / "strategy_module"
 
-        logger_path = base_strategy_dir / "trading_logger.py"
-        strategy_path = base_strategy_dir / "base_strategy.py"
-        current_data_path = base_strategy_dir / "current_data.py"
-
-        return logger_path, strategy_path, current_data_path
+        logger_path = strategy_module_dir / "trading_logger.py"
+        strategy_path = strategy_module_dir / "base_strategy.py"
+        current_data_path = strategy_module_dir / "current_data.py"
+        example_path = base_sandbox_dir / "base_example.py"
+        return logger_path, strategy_path, current_data_path, example_path
 
     # Get file paths asynchronously
-    logger_path, strategy_path, current_data_path = await get_file_paths()
+    logger_path, strategy_path, current_data_path, example_path = await get_file_paths()
 
     # Read file contents
     logger_content = await read_file_content(logger_path)
     base_strategy = await read_file_content(strategy_path)
     current_data_content = await read_file_content(current_data_path)
+    example_content = await read_file_content(example_path)
     # Combine files with headers
     code_example = f"""
+### Base Classes
 
 ```python
 {logger_content}
@@ -52,6 +53,12 @@ async def base_strategy_example():
 
 ```python
 {base_strategy}
+```
+
+### Example strategy blueprint
+
+```python
+{example_content}
 ```
 """
 

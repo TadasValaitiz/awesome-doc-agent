@@ -36,7 +36,7 @@ async def upload_sandbox_helper_files(sandbox):
     """Upload helper files to the sandbox from the sandbox_files directory."""
     try:
         sandbox_files_dir = (
-            pathlib.Path(__file__).parent / "sandbox_files/base_strategy"
+            pathlib.Path(__file__).parent / "sandbox_files/strategy_module"
         )
 
         # Use async version to list files in directory
@@ -46,7 +46,7 @@ async def upload_sandbox_helper_files(sandbox):
 
         # Create a proper package structure in the sandbox
         try:
-            await sandbox.files.make_dir("/code/base_strategy")
+            await sandbox.files.make_dir("/code/strategy_module")
         except Exception as e:
             server_logger.info(f"Directory may already exist: {str(e)}")
 
@@ -57,20 +57,20 @@ async def upload_sandbox_helper_files(sandbox):
             async with aiofiles.open(file_path, "r") as f:
                 file_content = await f.read()
 
-            # Upload to the sandbox /code/base_strategy directory
-            await sandbox.files.write(f"/code/base_strategy/{file_name}", file_content)
+            # Upload to the sandbox /code/strategy_module directory
+            await sandbox.files.write(f"/code/strategy_module/{file_name}", file_content)
             server_logger.info(
-                f"Uploaded {file_name} to sandbox /code/base_strategy directory"
+                f"Uploaded {file_name} to sandbox /code/strategy_module directory"
             )
 
-        # Create setup.py file for the base_strategy package
+        # Create setup.py file for the strategy_module package
         setup_py_content = """
 from setuptools import setup
 
 setup(
-    name="base_strategy",
+    name="strategy_module",
     version="0.1.0",
-    packages=["base_strategy"],
+    packages=["strategy_module"],
     install_requires=[
         "pandas",
         "numpy",
@@ -89,7 +89,7 @@ setup(
 {
     "include": [
         "/code",
-        "/code/base_strategy"
+        "/code/strategy_module"
     ],
     "exclude": [
         "**/node_modules",
@@ -105,14 +105,14 @@ setup(
     "pythonPlatform": "Linux",
     "extraPaths": [
         "/code",
-        "/code/base_strategy"
+        "/code/strategy_module"
     ],
     "executionEnvironments": [
         {
             "root": "/code",
             "extraPaths": [
                 "/code",
-                "/code/base_strategy"
+                "/code/strategy_module"
             ]
         }
     ]
@@ -124,7 +124,7 @@ setup(
 
         # Install the package in development mode
         await sandbox.commands.run("cd /code && pip install -e .")
-        server_logger.info("Installed base_strategy package in sandbox")
+        server_logger.info("Installed strategy_module package in sandbox")
 
     except Exception as e:
         server_logger.error(f"Error uploading sandbox files: {str(e)}")
@@ -171,9 +171,9 @@ async def download_all_files_from_sandbox(sandbox, file_extensions=None):
         server_logger.debug(
             f"Files in sandbox /code directory: {[entry for entry in files_list]}"
         )
-        base_list = await sandbox.files.list("/code/base_strategy")
+        base_list = await sandbox.files.list("/code/strategy_module")
         server_logger.debug(
-            f"Files in sandbox /code/base_strategy directory: {[entry for entry in base_list]}"
+            f"Files in sandbox /code/strategy_module directory: {[entry for entry in base_list]}"
         )
 
         # Look for output files generated during execution

@@ -19,7 +19,9 @@ code_system_prompt = """
 System Prompt:
 Your task is to create a new Python trading strategy class. This class must extend the `BaseStrategy` abstract class provided in the codebase below. Your implementation should define custom logic, including technical indicators, within the framework established by `BaseStrategy`.
 
-**Codebase:**
+**IMPORTANT: Your response MUST contain ONLY the generated Python code enclosed in a single markdown code block with reasoning comments. **
+
+**Codebase and example strategy blueprint:**
 {code_example}
 
 **Instructions for Implementation:**
@@ -28,27 +30,22 @@ Your task is to create a new Python trading strategy class. This class must exte
 
 2.  **Create Custom Data Class:** Define a new `dataclass` that inherits from `CurrentData`. Add fields to this class for all specific indicators and data points your strategy needs at each step (e.g., `ema_value: float`, `rsi_value: float`).
 
-3.  **Implement ALL Abstract Methods:** Provide concrete implementations for the following methods within your strategy class:
-    * `create_current_data(self) -> YourCustomData`: Calculate indicators for the current step using available data (like `self.close_series` or `self.data`) and return an instance of `YourCustomData`.
-    * `has_position(self) -> bool`: Return `True` if `self.position` exists and has a non-zero size, `False` otherwise (e.g., `return self.position is not None and self.position.size != 0`).
-    * `should_stop_trading(self) -> bool`: Implement your risk management logic. Return `True` to stop placing new trades.
-    * `trading(self) -> None`: Implement the core entry and exit logic based on `self.current_data`. Use `self.trade_signal()` and `self.close_trades()`.
-    * `post_trading(self) -> None`: Implement any logic needed after the trade decision (e.g., updating state, logging, checking if pending orders were filled).
+3.  **Implement ALL Abstract Methods:** Follow the example strategy blueprint. Implement `signal()` method using combination of indicators, add weights to indicators that later can be optimized.
 
 4.  **Override `init()`:**
     * Always call `super().init()` first.
     * Define strategy parameters (e.g., `self.ema_period = 20`).
-    * Initialize indicator calculation tools or settings if needed (e.g., setting up `pandas_ta` function calls or objects). Note: Actual calculation of indicator *values* for each step should happen later, typically in `create_current_data`.
+    * Initialize indicator calculation tools or settings if needed (e.g., setting up `TA-Lib` function calls or objects). Note: Actual calculation of indicator *values* for each step should happen later, typically in `create_current_data`.
 
-5.  **Use Provided Helpers:** Leverage `self.trade_signal()`, `self.do_long()`, `self.do_short()`, and `self.close_trades()` for order management.
+5.  **Prepare for backtesting:**  Implement `run_backtest()` with correct dimensions for optimization
 
 6.  **Logging:** Use `self.logger` (e.g., `self.logger.info(...)`, `self.logger.error(...)`) for informative messages throughout your strategy logic.
 
 7.  **Type Hinting:** Use Python 3.12+ type hints throughout your code for clarity and to aid static analysis.
 
-8.  **Comments:** Add comments to explain complex logic sections or the reasoning behind specific decisions.
+8.  **Comments and Reasoning:** Embed ALL reasoning, explanations for design choices, and descriptions of complex logic directly within the code as comments (using `#`). Ensure sufficient comments are provided for clarity.
 
-9.  **Dependencies:** Assume the following libraries are available in the environment: `backtesting`, `pandas`, `numpy`, `pandas_ta` (or other relevant indicator library like `ta`), `uuid`, `pytz`. Your code should correctly import necessary components from the `base_strategy` module.
+9.  **Dependencies:** Assume the following libraries are available in the environment: `backtesting`, `TA-Lib`, `numpy`, `TA-Lib` (or other relevant indicator library like `ta`), `uuid`, `pytz`. Your code should correctly import necessary components from the `strategy_module` module.
 
 10. **Security:** Do not include code that uses system commands (like `os.system`), reads/writes arbitrary files outside of a designated safe scope, or could otherwise exploit or harm the execution environment.
 """

@@ -8,6 +8,11 @@ from typing import Any, Dict, Iterable, List, Literal, Optional, Tuple, Union, c
 from datetime import datetime
 import json
 import asyncio
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 
 class VectorDB:
@@ -15,7 +20,7 @@ class VectorDB:
 
     def __init__(self):
         self.db = chromadb.PersistentClient("data/chroma-db")
-        self.openai_api_key = "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"
+        self.openai_api_key = os.getenv("OPENAI_API_KEY")
 
     def vectorstore(self, collection_name: str):
         if self.openai_api_key is None:
@@ -42,7 +47,7 @@ class VectorDB:
 class AsyncVectorDB:
     def __init__(self):
         self.db = None
-        self.openai_api_key = "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"
+        self.openai_api_key = os.getenv("OPENAI_API_KEY")
 
     async def get_db(self):
         """Initialize the ChromaDB client in a non-blocking way"""
