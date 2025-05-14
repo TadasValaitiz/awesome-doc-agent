@@ -23,6 +23,23 @@ class NumpyJSONEncoder(json.JSONEncoder):
         return super().default(obj)
 
 
+def _safe_serialize(obj):
+    """Safely serialize objects to JSON, handling non-serializable items."""
+    try:
+        return json.dumps(obj)
+    except (TypeError, OverflowError, ValueError):
+        result = {}
+        for key, value in obj.items():
+            try:
+                # Try to serialize individual value
+                json.dumps({key: value}, cls=NumpyJSONEncoder)
+                result[key] = value
+            except (TypeError, OverflowError, ValueError):
+                # If not serializable, store string representation
+                result[key] = f"<non-serializable: {type(value).__name__}>"
+        return json.dumps(result)
+
+
 @dataclass
 class LogMessage:
     """Structure for log messages.
@@ -115,7 +132,7 @@ class ConsoleLogger(BaseLogger):
 
         formatted_message = message.message
         if message.data:
-            formatted_message = f"{formatted_message} - {json.dumps(message.data, cls=NumpyJSONEncoder)}"
+            formatted_message = f"{formatted_message} - {_safe_serialize(message.data)}"
         if message.stacktrace:
             formatted_message = (
                 f"{formatted_message}\nStacktrace:\n{message.stacktrace}"
@@ -171,7 +188,7 @@ class FileLogger(BaseLogger):
 
         formatted_message = message.message
         if message.data:
-            formatted_message = f"{formatted_message} - {json.dumps(message.data)}"
+            formatted_message = f"{formatted_message} - {_safe_serialize(message.data)}"
         if message.stacktrace:
             formatted_message = (
                 f"{formatted_message}\nStacktrace:\n{message.stacktrace}"
