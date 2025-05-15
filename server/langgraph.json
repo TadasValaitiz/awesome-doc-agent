@@ -13,5 +13,16 @@
   "env": ".env",
   "auth": {
     "path": "src/security/auth.py:auth"
-  }
+  },
+  "dockerfile_lines": [
+    "RUN apt-get update && apt-get install -y build-essential wget",
+    "RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz",
+    "RUN tar -xzf ta-lib-0.4.0-src.tar.gz",
+    "WORKDIR /ta-lib",
+    "RUN ./configure --prefix=/usr",
+    "RUN make",
+    "RUN make install",
+    "WORKDIR /deps/server",
+    "RUN pip install TA-Lib"
+  ]
 }
